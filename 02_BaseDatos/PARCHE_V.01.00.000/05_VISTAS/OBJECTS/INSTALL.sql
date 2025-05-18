@@ -1,0 +1,1 @@
+--\i 05_VISTAS/OBJECTS/[nombre_objeto].sql

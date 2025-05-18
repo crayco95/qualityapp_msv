@@ -1,0 +1,15 @@
+===================================
+== Control de cambios generales ===
+===================================
+
+Control de version 
+V.[A].[B].[C]
+
+A=Version mayor de aplicacion. Cambio incompatible con versiones anteriors
+B=Nueva funcionalidad que no afecta la compatibilidad con versiones anteriores
+C=Solucion de incidentes
+
+
+v 1.0.0
+-----------------------------------------------------------------------------------------------------
+1. Entrega inicial de aplicacion 

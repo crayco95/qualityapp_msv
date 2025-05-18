@@ -1,0 +1,1 @@
+--\i 03_ALTERS/OBJECTS/[nombre_objeto].sql
