@@ -10,6 +10,3 @@ def verify_password(password, hashed_password):
 def generate_token(user_id, role, name, email):
     return create_access_token(identity=str(user_id), additional_claims={"name": name, "role": role,  "email": email})
 
-
-#def generate_token(user_id, role):
-#    return create_access_token(identity=str(user_id), additional_claims={'role': role})
