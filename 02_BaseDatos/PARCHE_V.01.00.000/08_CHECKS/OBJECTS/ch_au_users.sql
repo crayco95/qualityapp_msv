@@ -10,4 +10,4 @@
 -- =========================================================================================================================================================================
 
 ALTER TABLE au_users
-ADD CONSTRAINT ch_au_users CHECK (usr_rol IN ('admin', 'evaluador', 'usuario'));
+ADD CONSTRAINT ch_au_users CHECK (usr_rol IN ('admin', 'tester', 'user'));

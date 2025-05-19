@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from flask_jwt_extended import jwt_required, get_jwt_identity
+from flask_jwt_extended import jwt_required, get_jwt_identity, get_jwt
 from security import hash_password, verify_password, generate_token
 from db import get_db_connection
 from log_manager import log_event
@@ -8,19 +8,16 @@ from middleware import limit_login_attempts
 
 auth_bp = Blueprint('auth', __name__)
 
-
+### 🔹 Registrar usuarios (Solo Administradores)
 @auth_bp.route('/register', methods=['POST'])
 @jwt_required()
 def register():
-    current_user_id = get_jwt_identity()
+    claims = get_jwt()
     conn = get_db_connection()
     cursor = conn.cursor()
     
     # Verificar si el usuario es admin
-    cursor.execute("SELECT usr_rol FROM au_users WHERE usr_id = %s;", (current_user_id,))
-    user_role = cursor.fetchone()
-    
-    if not user_role or user_role[0] != 'admin':
+    if claims.get("role") != "admin":
         return jsonify({"error": "Solo los administradores pueden crear usuarios"}), 403
 
     data = request.json
@@ -65,7 +62,7 @@ def register():
 
     return jsonify({"message": "Usuario registrado exitosamente", "user_id": user_id})
 
-
+### 🔹 Ingreso al aplicativo por login
 @auth_bp.route('/login', methods=['POST'])
 @limit_login_attempts
 def login():
@@ -73,7 +70,7 @@ def login():
     conn = get_db_connection()
     cursor = conn.cursor()
 
-    cursor.execute("SELECT usr_id, usr_password, usr_rol FROM au_users WHERE usr_email = %s;", (data['email'],))
+    cursor.execute("SELECT usr_id, usr_password, usr_rol, usr_name, usr_email FROM au_users WHERE usr_email = %s;", (data['email'],))
     user = cursor.fetchone()
 
     conn.close()
@@ -82,14 +79,114 @@ def login():
         log_event(f"Intento fallido de login: {data['email']}")
         return jsonify({"error": "Credenciales incorrectas"}), 401
 
-    log_event(f"Usuario {user[0]} ha iniciado sesión")
-    token = generate_token(user[0], user[2])
+    log_event(f"Usuario {user[3]} ha iniciado sesión")
+    token = generate_token(user[0], user[2], user[3], user[4])
     return jsonify({"access_token": token})
 
 
-
+### 🔹 Obtener información de usuario por token
 @auth_bp.route('/profile', methods=['GET'])
 @jwt_required()
 def profile():
-    identity = request.user
-    return jsonify({"message": "Acceso permitido", "user": identity})
+    identity = get_jwt_identity()
+    claims = get_jwt()  # Obtener datos adicionales (name, role, email)
+
+    return jsonify({
+        "message": "Acceso permitido",
+        "user": {
+            "id": identity,
+            "name": claims.get("name"),  # Aquí va el nombre, no el ID
+            "role": claims.get("role"),
+            "email": claims.get("email")
+        }
+    })
+### 🔹 Obtener todos los usuarios (Solo Administradores)
+@auth_bp.route('/users', methods=['GET'])
+@jwt_required()
+def get_users():
+    claims = get_jwt()
+    if claims.get("role") != "admin":
+        return jsonify({"error": "Solo los administradores pueden ver la lista de usuarios"}), 403
+
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT usr_id, usr_name, usr_email, usr_rol FROM au_users;")
+    users = cursor.fetchall()
+    conn.close()
+
+    return jsonify({"users": [{"id": u[0], "nombre": u[1], "email": u[2], "role": u[3]} for u in users]})
+
+### 🔹 Obtener usuario por ID (Solo Administradores)
+@auth_bp.route('/users/<int:user_id>', methods=['GET'])
+@jwt_required()
+def get_user(user_id):
+    claims = get_jwt()
+    if claims.get("role") != "admin":
+        return jsonify({"error": "Solo los administradores pueden ver usuarios"}), 403
+
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT usr_id, usr_name, usr_email, usr_rol FROM au_users WHERE usr_id = %s;", (user_id,))
+    user = cursor.fetchone()
+    conn.close()
+
+    if not user:
+        return jsonify({"error": "Usuario no encontrado"}), 404
+
+    return jsonify({"user": {"id": user[0], "nombre": user[1], "email": user[2], "role": user[3]}})
+
+### 🔹 Actualizar usuario (Solo Administradores)
+@auth_bp.route('/users/<int:user_id>', methods=['PUT'])
+@jwt_required()
+def update_user(user_id):
+    claims = get_jwt()
+    if claims.get("role") != "admin":
+        return jsonify({"error": "Solo los administradores pueden actualizar usuarios"}), 403
+
+    data = request.json
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT usr_password FROM au_users WHERE usr_id = %s;", (user_id,))
+    user = cursor.fetchone()
+
+    if not user:
+        return jsonify({"error": "Usuario no encontrado"}), 404
+
+    # Mantener la contraseña actual si no se envía una nueva
+    hashed_password = user[0]  # Hash de la BD
+    if "password" in data and data["password"]:
+        hashed_password = hash_password(data["password"])
+
+    cursor.execute("""
+        UPDATE au_users SET usr_name = %s, usr_email = %s, usr_password = %s, usr_rol = %s
+        WHERE usr_id = %s;
+    """, (data.get("nombre"), data.get("email"), hashed_password, data.get("rol"), user_id))
+
+    conn.commit()
+    conn.close()
+
+    return jsonify({"message": "Usuario actualizado exitosamente"})
+
+### 🔹 Eliminar usuario (Solo Administradores)
+@auth_bp.route('/users/<int:user_id>', methods=['DELETE'])
+@jwt_required()
+def delete_user(user_id):
+    claims = get_jwt()
+    if claims.get("role") != "admin":
+        return jsonify({"error": "Solo los administradores pueden eliminar usuarios"}), 403
+
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT usr_id FROM au_users WHERE usr_id = %s;", (user_id,))
+    if not cursor.fetchone():
+        return jsonify({"error": "Usuario no encontrado"}), 404
+
+    cursor.execute("DELETE FROM au_users WHERE usr_id = %s;", (user_id,))
+    conn.commit()
+    conn.close()
+
+    return jsonify({"message": "Usuario eliminado exitosamente"})
