@@ -1,8 +1,8 @@
 from flask import Blueprint, request, jsonify
-from flask_jwt_extended import jwt_required
+from flask_jwt_extended import jwt_required, get_jwt_identity
 from security import hash_password, verify_password, generate_token
 from db import get_db_connection
-from logging import log_event
+from log_manager import log_event
 from middleware import limit_login_attempts
 
 
@@ -12,20 +12,46 @@ auth_bp = Blueprint('auth', __name__)
 @auth_bp.route('/register', methods=['POST'])
 @jwt_required()
 def register():
-    identity = request.user
-    if identity['role'] != 'admin':
+    current_user_id = get_jwt_identity()
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    
+    # Verificar si el usuario es admin
+    cursor.execute("SELECT usr_rol FROM au_users WHERE usr_id = %s;", (current_user_id,))
+    user_role = cursor.fetchone()
+    
+    if not user_role or user_role[0] != 'admin':
         return jsonify({"error": "Solo los administradores pueden crear usuarios"}), 403
 
     data = request.json
-    conn = get_db_connection()
-    cursor = conn.cursor()
+
+    # Validar que todos los campos requeridos estén presentes
+    required_fields = ['nombre', 'email', 'password', 'rol']
+    for field in required_fields:
+        if field not in data:
+            return jsonify({"error": f"El campo {field} es requerido"}), 422
+            
+    # Validar que el email tenga un formato válido
+    if not '@' in data['email'] or not '.' in data['email']:
+        return jsonify({"error": "Formato de email inválido"}), 422
+        
+    # Validar que el rol sea válido
+    roles_validos = ['admin', 'user', 'evaluador']  # Ajusta esto según tus roles permitidos
+    if data['rol'] not in roles_validos:
+        return jsonify({"error": "Rol no válido"}), 422
+        
+    # Validar longitud mínima de la contraseña
+    if len(data['password']) < 6:
+        return jsonify({"error": "La contraseña debe tener al menos 6 caracteres"}), 422
+    
 
     # Verificar si el usuario ya existe
-    cursor.execute("SELECT usr_id FROM au_users WHERE usr_email = %s;", (data['email'],))
+    cursor.execute("SELECT usr_id, usr_password, usr_rol FROM au_users WHERE usr_email = %s;", (data['email'],))
     if cursor.fetchone():
         return jsonify({"error": "Email ya registrado"}), 400
 
     hashed_password = hash_password(data['password'])
+   
 
     # Insertar nuevo usuario en la tabla actualizada
     cursor.execute("""
