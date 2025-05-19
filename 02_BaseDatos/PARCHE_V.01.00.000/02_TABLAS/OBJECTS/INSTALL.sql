@@ -11,3 +11,4 @@
 
 
 \i 02_TABLAS/OBJECTS/au_users.sql
+\i 02_TABLAS/OBJECTS/au_user_act_log.sql

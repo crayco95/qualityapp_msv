@@ -13,6 +13,7 @@ auth_bp = Blueprint('auth', __name__)
 @jwt_required()
 def register():
     claims = get_jwt()
+    user_id = get_jwt_identity()
     conn = get_db_connection()
     cursor = conn.cursor()
     
@@ -56,11 +57,17 @@ def register():
                    VALUES (%s, %s, %s, %s) RETURNING usr_id;
                    """, (data['nombre'], data['email'], hashed_password, data['rol']))
 
+
+    # Registrar actividad de creación de usuario
+    cursor.execute("INSERT INTO au_user_act_log (usrlog_usr_id, usrlog_action, usrlog_description, usrlog_ip_address) VALUES (%s, %s, %s, %s);",
+                   (user_id, "CREATE_USER", f"Usuario {data['nombre']} registrado por {claims.get('name')}",
+                    request.remote_addr))
+
+
     conn.commit()
-    user_id = cursor.fetchone()[0]
     conn.close()
 
-    return jsonify({"message": "Usuario registrado exitosamente", "user_id": user_id})
+    return jsonify({"message": "Usuario registrado exitosamente", "user": claims.get('name')})
 
 ### 🔹 Ingreso al aplicativo por login
 @auth_bp.route('/login', methods=['POST'])
@@ -73,15 +80,22 @@ def login():
     cursor.execute("SELECT usr_id, usr_password, usr_rol, usr_name, usr_email FROM au_users WHERE usr_email = %s;", (data['email'],))
     user = cursor.fetchone()
 
-    conn.close()
-
     if not user or not verify_password(data['password'], user[1]):
-        log_event(f"Intento fallido de login: {data['email']}")
+        cursor.execute("INSERT INTO au_user_act_log (usrlog_usr_id, usrlog_action, usrlog_description, usrlog_ip_address) VALUES (%s, %s, %s, %s);",
+                       (None, "FAILED_LOGIN", f"Intento de acceso fallido para {data['email']}", request.remote_addr))
+        conn.commit()
+        conn.close()
         return jsonify({"error": "Credenciales incorrectas"}), 401
 
-    log_event(f"Usuario {user[3]} ha iniciado sesión")
+    cursor.execute("INSERT INTO au_user_act_log (usrlog_usr_id, usrlog_action, usrlog_description, usrlog_ip_address) VALUES (%s, %s, %s, %s);",
+                   (user[0], "LOGIN", f"Usuario {user[3]} inició sesión", request.remote_addr))
+
+    conn.commit()
+    conn.close()
+
     token = generate_token(user[0], user[2], user[3], user[4])
     return jsonify({"access_token": token})
+
 
 
 ### 🔹 Obtener información de usuario por token
@@ -142,6 +156,7 @@ def get_user(user_id):
 @jwt_required()
 def update_user(user_id):
     claims = get_jwt()
+    identity = get_jwt_identity()
     if claims.get("role") != "admin":
         return jsonify({"error": "Solo los administradores pueden actualizar usuarios"}), 403
 
@@ -165,6 +180,12 @@ def update_user(user_id):
         WHERE usr_id = %s;
     """, (data.get("nombre"), data.get("email"), hashed_password, data.get("rol"), user_id))
 
+    # Registrar actividad de actualización
+    cursor.execute("INSERT INTO au_user_act_log (usrlog_usr_id, usrlog_action, usrlog_description, usrlog_ip_address) VALUES (%s, %s, %s, %s);",
+                   (identity, "UPDATE_USER", f"Usuario {user_id} actualizado por {claims.get('name')}",
+                    request.remote_addr))
+
+
     conn.commit()
     conn.close()
 
@@ -175,6 +196,7 @@ def update_user(user_id):
 @jwt_required()
 def delete_user(user_id):
     claims = get_jwt()
+    identity = get_jwt_identity()
     if claims.get("role") != "admin":
         return jsonify({"error": "Solo los administradores pueden eliminar usuarios"}), 403
 
@@ -182,10 +204,17 @@ def delete_user(user_id):
     cursor = conn.cursor()
 
     cursor.execute("SELECT usr_id FROM au_users WHERE usr_id = %s;", (user_id,))
-    if not cursor.fetchone():
+    user = cursor.fetchone()
+
+    if not user:
         return jsonify({"error": "Usuario no encontrado"}), 404
 
     cursor.execute("DELETE FROM au_users WHERE usr_id = %s;", (user_id,))
+
+    # Registrar actividad de eliminación
+    cursor.execute("INSERT INTO au_user_act_log (usrlog_usr_id, usrlog_action, usrlog_description, usrlog_ip_address) VALUES (%s, %s, %s, %s);",
+                   (identity, "DELETE_USER", f"Usuario {user[0]} eliminado por {claims.get('name')}",
+                    request.remote_addr))
     conn.commit()
     conn.close()
 

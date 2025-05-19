@@ -5,3 +5,5 @@
 
 \i 03_FOREIGN_KEY/OBJECTS/rp_assessment_fk.sql
 \i 03_FOREIGN_KEY/OBJECTS/rp_results_fk.sql
+
+\i 03_FOREIGN_KEY/OBJECTS/au_user_act_log_fk.sql

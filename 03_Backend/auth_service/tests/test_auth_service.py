@@ -23,19 +23,19 @@ def test_create_user():
     user_data = {"nombre": "UsuarioPrueba", "email": "prueba@example.com", "password": "segura123", "rol": "user"}
     response = requests.post(f"{BASE_URL}/register", json=user_data, headers={"Authorization": f"Bearer {token}"})
     assert response.status_code == 200
-    assert "user_id" in response.json()
+    assert "user" in response.json()
 
 def test_update_user():
     """Probar la actualización de un usuario"""
     token = get_token()
     updated_data = {"nombre": "Modificado", "email": "modificado@example.com", "rol": "tester"}
-    response = requests.put(f"{BASE_URL}/users/8", json=updated_data, headers={"Authorization": f"Bearer {token}"})
+    response = requests.put(f"{BASE_URL}/users/2", json=updated_data, headers={"Authorization": f"Bearer {token}"})
     assert response.status_code == 200
     assert response.json()["message"] == "Usuario actualizado exitosamente"
 
 def test_delete_user():
     """Probar eliminación de usuario"""
     token = get_token()
-    response = requests.delete(f"{BASE_URL}/users/8", headers={"Authorization": f"Bearer {token}"})
+    response = requests.delete(f"{BASE_URL}/users/2", headers={"Authorization": f"Bearer {token}"})
     assert response.status_code == 200
     assert response.json()["message"] == "Usuario eliminado exitosamente"

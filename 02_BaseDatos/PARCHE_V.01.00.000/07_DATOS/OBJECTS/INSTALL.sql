@@ -1,0 +1,1 @@
+\i 07_DATOS/OBJECTS/au_user_admin_19052025.sql
