@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  auth_service:
+    build: ./backend/auth_service
+    container_name: auth_service
+    ports:
+      - "5000:5000"
+    environment:
+      DATABASE_URL: "postgresql://postgres:admin@192.168.1.2/QUALITYAPP_BD"
