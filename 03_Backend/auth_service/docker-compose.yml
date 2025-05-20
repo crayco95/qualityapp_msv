@@ -1,9 +1,0 @@
-
-services:
-  auth_service:
-    build: ./
-    container_name: auth_service
-    ports:
-      - "5000:5000"
-    environment:
-      DATABASE_URL: "postgresql://postgres:admin@192.168.1.2/QUALITYAPP_BD"

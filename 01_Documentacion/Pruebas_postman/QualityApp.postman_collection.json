@@ -27,13 +27,10 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:5000/auth/login",
+					"raw": "http://localhost:5000/auth/login",
 					"protocol": "http",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"localhost"
 					],
 					"port": "5000",
 					"path": [
@@ -48,6 +45,74 @@
 						}
 					]
 				}
+			},
+			"response": []
+		},
+		{
+			"name": "register_user",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc0NzY5NzM2NCwianRpIjoiYmJkZDk1ZDItNzViZS00NDc3LWJiYzItNjc0MzVjNGQzZWI2IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjEiLCJuYmYiOjE3NDc2OTczNjQsImNzcmYiOiI0OTMzMTUzMC03YzI4LTQ4YWUtYmQ1OS0yNzkwNjY4Mzg5NzYiLCJleHAiOjE3NDc2OTgyNjQsIm5hbWUiOiJBZG1pbmlzdHJhZG9yIiwicm9sZSI6ImFkbWluIiwiZW1haWwiOiJhZG1pbkBleGFtcGxlLmNvbSJ9.EPqkPJanTsIalD83c8azhJzBpaIpfX6vwH0Q7qclIlo"
+					}
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"UsuarioPrueba\", \r\n    \"email\": \"prueba123@example.com\", \r\n    \"password\": \"segura123\", \r\n    \"rol\": \"user\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://127.0.0.1:5000/auth/register"
+			},
+			"response": []
+		},
+		{
+			"name": "auth_service_healthy",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "register_software",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTc0Nzc1ODA0MiwianRpIjoiNTU2M2FhM2YtYmE1ZC00YTA4LWIzNjEtNzkyZjdiMzdkMmJlIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjEiLCJuYmYiOjE3NDc3NTgwNDIsImNzcmYiOiI4OWExN2YwMi1lM2Q5LTQxYTMtOTIzMy1jNTJkNDE5ZWQ1MGYiLCJleHAiOjE3NDc3NTg5NDIsIm5hbWUiOiJBZG1pbmlzdHJhZG9yIiwicm9sZSI6ImFkbWluIiwiZW1haWwiOiJhZG1pbkBleGFtcGxlLmNvbSJ9.9RA86rbzGjO2EflhiDXrKST7yGnxBDRiJppJFMQPckI"
+					}
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Sistema de Gestión\",\r\n    \"general_objectives\": \"Optimizar procesos\",\r\n    \"specific_objectives\": \"Reducir tiempos de respuesta\",\r\n    \"company\": \"Tech Corp\",\r\n    \"city\": \"Neiva\",\r\n    \"phone\": \"3123456789\",\r\n    \"test_date\": \"2025-05-20\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://127.0.0.1:5001/software/register"
 			},
 			"response": []
 		}

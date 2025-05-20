@@ -107,3 +107,6 @@ def profile():
             "email": claims.get("email")
         }
     })
+@auth_bp.route("/health", methods=["GET"])
+def health_check():
+    return jsonify({"status": "ok"}), 200
