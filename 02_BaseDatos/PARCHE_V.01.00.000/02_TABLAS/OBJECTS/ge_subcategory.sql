@@ -13,7 +13,9 @@ CREATE TABLE ge_subcategory (
     subctg_id 					SERIAL 			NOT NULL,
     subctg_param_id 			INT    			NOT NULL,
     subctg_name 				VARCHAR(100)   	NOT NULL,
-	subctg_description			TEXT
+	subctg_description			TEXT,
+	subctg_date_create			TIMESTAMP DEFAULT CURRENT_TIMESTAMP				,
+	subctg_date_update			TIMESTAMP DEFAULT CURRENT_TIMESTAMP				
 )
 WITH (
     OIDS = FALSE

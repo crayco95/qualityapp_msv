@@ -15,8 +15,10 @@ CREATE TABLE rp_results (
     rslt_param_id 				INT   			NOT NULL,
 	rslt_subctg_id 				INT   			NOT NULL,
 	rslt_score					DECIMAL(5,2),
+	rslt_weight					DECIMAL(5,2),
 	rslt_observations			TEXT
-	
+	rslt_date_create			TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	rslt_date_update			TIMESTAMP DEFAULT CURRENT_TIMESTAMP	
 )
 WITH (
     OIDS = FALSE

@@ -17,7 +17,9 @@ CREATE TABLE ge_software (
     soft_company 						VARCHAR(255),
     soft_city 							VARCHAR(100),
     soft_phone 							VARCHAR(20),
-    soft_test_date	 					TIMESTAMP    NOT NULL
+    soft_test_date	 					TIMESTAMP    NOT NULL,
+	soft_date_create					TIMESTAMP DEFAULT CURRENT_TIMESTAMP				,
+	soft_date_update					TIMESTAMP DEFAULT CURRENT_TIMESTAMP				
 )
 WITH (
     OIDS = FALSE

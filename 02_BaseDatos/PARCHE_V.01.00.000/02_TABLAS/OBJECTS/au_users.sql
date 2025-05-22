@@ -15,7 +15,8 @@ CREATE TABLE au_users (
     usr_email 				VARCHAR(100)   							UNIQUE	NOT NULL,
 	usr_password			TEXT   									NOT NULL,
 	usr_rol					VARCHAR(100) 							NOT NULL,
-	usr_date_create			TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+	usr_date_create			TIMESTAMP DEFAULT CURRENT_TIMESTAMP				,
+	usr_date_update			TIMESTAMP DEFAULT CURRENT_TIMESTAMP				,
 )
 WITH (
     OIDS = FALSE

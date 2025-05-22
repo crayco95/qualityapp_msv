@@ -14,7 +14,9 @@ CREATE TABLE ge_parameters (
     param_standard_id 			INT    			NOT NULL,
     param_name 					VARCHAR(100)   	NOT NULL,
 	param_description			TEXT,
-	param_weight				DECIMAL(5,2)
+	param_weight				DECIMAL(5,2),
+	param_date_create			TIMESTAMP DEFAULT CURRENT_TIMESTAMP				,
+	param_date_update			TIMESTAMP DEFAULT CURRENT_TIMESTAMP				
 )
 WITH (
     OIDS = FALSE

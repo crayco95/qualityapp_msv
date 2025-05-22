@@ -13,7 +13,9 @@ CREATE TABLE ge_clasification (
     clsf_id 					SERIAL 			NOT NULL,
     clsf_range_min 				INT    			NOT NULL,
     clsf_range_max 				INT   			NOT NULL,
-	clsf_level 					VARCHAR(50)   	NOT NULL
+	clsf_level 					VARCHAR(50)   	NOT NULL,
+	clsf_date_create			TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	clsf_date_update			TIMESTAMP DEFAULT CURRENT_TIMESTAMP				
 	
 )
 WITH (

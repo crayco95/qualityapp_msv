@@ -15,6 +15,7 @@ CREATE TABLE rp_assessment (
     assmt_standard_id 			INT   			NOT NULL,
 	assmt_prcnt_id 				INT   			NOT NULL,
 	assmt_date_create 			TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	assmt_date_update			TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	assmt_score					DECIMAL(5,2),
 	assmt_classification_id		INT
 	

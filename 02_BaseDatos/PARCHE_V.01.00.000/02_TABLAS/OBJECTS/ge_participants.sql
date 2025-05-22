@@ -15,7 +15,10 @@ CREATE TABLE ge_participants (
 	prcnt_usr_id 				INT 		    NOT NULL,
     prcnt_name 					VARCHAR(100)    NOT NULL,
     prcnt_position 				VARCHAR(100),
-    prcnt_signature 			TEXT
+    prcnt_signature 			TEXT,
+	prcnt_date_create			TIMESTAMP DEFAULT CURRENT_TIMESTAMP				,
+	prcnt_date_update			TIMESTAMP DEFAULT CURRENT_TIMESTAMP				
+	
 )
 WITH (
     OIDS = FALSE

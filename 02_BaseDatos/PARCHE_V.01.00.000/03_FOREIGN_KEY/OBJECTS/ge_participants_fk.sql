@@ -12,8 +12,8 @@
 
    
 alter table only ge_participants add constraint ge_participants_ge_software 
-	foreign key (prcnt_soft_id) references ge_software(soft_id);
+	foreign key (prcnt_soft_id) references ge_software(soft_id) ON DELETE CASCADE;
     
 alter table only ge_participants add constraint ge_participants_au_users
-	foreign key (prcnt_usr_id) references au_users(usr_id);
+	foreign key (prcnt_usr_id) references au_users(usr_id) ON DELETE CASCADE;
     
