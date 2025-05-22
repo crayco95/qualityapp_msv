@@ -84,7 +84,7 @@ class SubcategoryService:
             if not update_fields:
                 return None
 
-            update_fields.append("subctg_date_update = CURRENT_TIMESTAMP")
+
             params.append(subcategory_id)
             
             query = f"""

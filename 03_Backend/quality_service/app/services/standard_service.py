@@ -85,8 +85,7 @@ class StandardService:
                 update_fields.append("strnd_status = %s")
                 params.append(status)
                 
-            # Actualizar la fecha de modificación
-            update_fields.append("strnd_date_update = CURRENT_TIMESTAMP")
+
                 
             if not update_fields:
                 return None

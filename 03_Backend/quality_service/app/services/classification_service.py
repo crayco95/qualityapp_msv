@@ -105,7 +105,7 @@ class ClassificationService:
             if not update_fields:
                 return None
 
-            update_fields.append("clsf_date_update = CURRENT_TIMESTAMP")
+            
             params.append(classification_id)
             
             query = f"""

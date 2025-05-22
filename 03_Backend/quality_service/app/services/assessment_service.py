@@ -206,7 +206,7 @@ class AssessmentService:
             if not update_fields:
                 return None
 
-            update_fields.append("assmt_date_update = CURRENT_TIMESTAMP")
+           
             params.append(assessment_id)
             
             query = f"""

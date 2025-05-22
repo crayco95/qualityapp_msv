@@ -70,8 +70,7 @@ class ParameterService:
             if not update_fields:
                 return None
 
-            # Agregar actualización de fecha
-            update_fields.append("param_date_update = CURRENT_TIMESTAMP")
+            
                 
             params.append(parameter_id)
             

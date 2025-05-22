@@ -8,6 +8,7 @@ from app.controllers.standard_routes import standard_bp
 from app.controllers.assessment_routes import assessment_bp
 from app.controllers.classification_routes import classification_bp
 from app.controllers.result_routes import result_bp
+from app.controllers.report_routes import report_bp
 
 # Importación de modelos
 from app.models.software import Software
@@ -27,6 +28,7 @@ def create_app():
     app.register_blueprint(assessment_bp, url_prefix="/assessment")
     app.register_blueprint(classification_bp, url_prefix="/classification")
     app.register_blueprint(result_bp, url_prefix="/result")
+    app.register_blueprint(report_bp, url_prefix="/report")
 
     return app
 

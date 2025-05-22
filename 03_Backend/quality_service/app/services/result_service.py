@@ -79,8 +79,7 @@ class ResultService:
                 params.append(classification_id)
                 
             if not update_fields:
-                return None
-            update_fields.append("rslt_date_update = CURRENT_TIMESTAMP")    
+                return None  
             params.append(result_id)
             
             query = f"""
