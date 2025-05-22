@@ -3,17 +3,18 @@ from app.models.participant import Participant
 
 class ParticipantService:
     @staticmethod
-    def create_participant(name, position, email, phone):
+    def create_participant(name, position, soft_id, usr_id, signature=None):
         conn = get_db_connection()
         cursor = conn.cursor()
         
         try:
             cursor.execute("""
                 INSERT INTO ge_participants 
-                (part_name, part_position, part_email, part_phone)
-                VALUES (%s, %s, %s, %s)
-                RETURNING part_id, part_name, part_position, part_email, part_phone
-            """, (name, position, email, phone))
+                (prcnt_name, prcnt_position, prcnt_soft_id, prcnt_usr_id, prcnt_signature)
+                VALUES (%s, %s, %s, %s, %s)
+                RETURNING prcnt_id, prcnt_name, prcnt_position, prcnt_soft_id, 
+                          prcnt_usr_id, prcnt_signature, prcnt_date_create
+            """, (name, position, soft_id, usr_id, signature))
             
             participant_data = cursor.fetchone()
             conn.commit()
@@ -32,9 +33,10 @@ class ParticipantService:
         
         try:
             cursor.execute("""
-                SELECT part_id, part_name, part_position, part_email, part_phone
+                SELECT prcnt_id, prcnt_name, prcnt_position, prcnt_soft_id, 
+                       prcnt_usr_id, prcnt_signature, prcnt_date_create
                 FROM ge_participants
-                ORDER BY part_name
+                ORDER BY prcnt_name
             """)
             
             participants = [Participant.from_db_row(row) for row in cursor.fetchall()]
@@ -49,9 +51,10 @@ class ParticipantService:
         
         try:
             cursor.execute("""
-                SELECT part_id, part_name, part_position, part_email, part_phone
+                SELECT prcnt_id, prcnt_name, prcnt_position, prcnt_soft_id, 
+                       prcnt_usr_id, prcnt_signature, prcnt_date_create
                 FROM ge_participants
-                WHERE part_id = %s
+                WHERE prcnt_id = %s
             """, (participant_id,))
             
             participant_data = cursor.fetchone()
@@ -60,8 +63,9 @@ class ParticipantService:
             return None
         finally:
             conn.close()
+
     @staticmethod
-    def update_participant(participant_id, name=None, position=None, email=None, phone=None):
+    def update_participant(participant_id, name=None, position=None, signature=None):
         conn = get_db_connection()
         cursor = conn.cursor()
         
@@ -70,17 +74,14 @@ class ParticipantService:
             params = []
             
             if name is not None:
-                update_fields.append("part_name = %s")
+                update_fields.append("prcnt_name = %s")
                 params.append(name)
             if position is not None:
-                update_fields.append("part_position = %s")
+                update_fields.append("prcnt_position = %s")
                 params.append(position)
-            if email is not None:
-                update_fields.append("part_email = %s")
-                params.append(email)
-            if phone is not None:
-                update_fields.append("part_phone = %s")
-                params.append(phone)
+            if signature is not None:
+                update_fields.append("prcnt_signature = %s")
+                params.append(signature)
                 
             if not update_fields:
                 return None
@@ -90,8 +91,9 @@ class ParticipantService:
             query = f"""
                 UPDATE ge_participants 
                 SET {", ".join(update_fields)}
-                WHERE part_id = %s
-                RETURNING part_id, part_name, part_position, part_email, part_phone
+                WHERE prcnt_id = %s
+                RETURNING prcnt_id, prcnt_name, prcnt_position, prcnt_soft_id, 
+                          prcnt_usr_id, prcnt_signature, prcnt_date_create
             """
             
             cursor.execute(query, params)
@@ -116,8 +118,8 @@ class ParticipantService:
         try:
             cursor.execute("""
                 DELETE FROM ge_participants
-                WHERE part_id = %s
-                RETURNING part_id
+                WHERE prcnt_id = %s
+                RETURNING prcnt_id
             """, (participant_id,))
             
             deleted = cursor.fetchone()

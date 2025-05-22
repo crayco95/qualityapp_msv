@@ -17,8 +17,8 @@ alter table only rp_assessment add constraint rp_assessment_ge_software
 alter table only rp_assessment add constraint rp_assessment_ge_standards
 	foreign key (assmt_standard_id) references ge_standards(strnd_id);
 	
-alter table only rp_assessment add constraint rp_assessment_ge_participants
-	foreign key (assmt_prcnt_id) references ge_participants(prcnt_id);
+alter table only rp_assessment add constraint rp_assessment_ge_parameters
+	foreign key (assmt_param_id) references ge_parameters(param_id);
 	
 alter table only rp_assessment add constraint rp_assessment_ge_clasification
 	foreign key (assmt_classification_id) references ge_clasification(clsf_id);

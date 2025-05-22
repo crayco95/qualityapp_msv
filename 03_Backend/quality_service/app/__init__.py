@@ -5,11 +5,15 @@ from flask_jwt_extended import JWTManager
 from app.controllers.software_routes import software_bp
 from app.controllers.participant_routes import participant_bp
 from app.controllers.standard_routes import standard_bp
+from app.controllers.assessment_routes import assessment_bp
+from app.controllers.classification_routes import classification_bp
+from app.controllers.result_routes import result_bp
 
 # Importación de modelos
 from app.models.software import Software
 from app.models.participant import Participant
 from app.models.standard import Standard
+from app.models.result import Result
 
 
 def create_app():
@@ -20,8 +24,11 @@ def create_app():
     app.register_blueprint(software_bp, url_prefix="/software")
     app.register_blueprint(participant_bp, url_prefix="/participant")
     app.register_blueprint(standard_bp, url_prefix="/standard")
+    app.register_blueprint(assessment_bp, url_prefix="/assessment")
+    app.register_blueprint(classification_bp, url_prefix="/classification")
+    app.register_blueprint(result_bp, url_prefix="/result")
 
     return app
 
 # Exportar los modelos y componentes principales
-__all__ = ['create_app', 'Software', 'Participant', 'Standard']
+__all__ = ['create_app', 'Software', 'Participant', 'Standard', 'Parameter', 'Classification', 'Assessment', 'Result']

@@ -13,6 +13,10 @@
    
 alter table only ge_parameters add constraint ge_parameters_ge_standards 
 	foreign key (param_standard_id) references ge_standards(strnd_id);
+	
+   
+alter table only ge_parameters add constraint ge_parameters_ge_parameters 
+	foreign key (param_parent_id) references ge_parameters(param_id);
     
 
     

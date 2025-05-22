@@ -10,9 +10,10 @@ class StandardService:
         try:
             cursor.execute("""
                 INSERT INTO ge_standards 
-                (stdr_name, stdr_description, stdr_version, stdr_status)
+                (strnd_name, strnd_description, strnd_version, strnd_status)
                 VALUES (%s, %s, %s, %s)
-                RETURNING stdr_id, stdr_name, stdr_description, stdr_version, stdr_status
+                RETURNING strnd_id, strnd_name, strnd_description, strnd_version, 
+                          strnd_status, strnd_date_create, strnd_date_update
             """, (name, description, version, status))
             
             standard_data = cursor.fetchone()
@@ -32,9 +33,10 @@ class StandardService:
         
         try:
             cursor.execute("""
-                SELECT stdr_id, stdr_name, stdr_description, stdr_version, stdr_status
+                SELECT strnd_id, strnd_name, strnd_description, strnd_version,
+                       strnd_status, strnd_date_create, strnd_date_update
                 FROM ge_standards
-                ORDER BY stdr_name
+                ORDER BY strnd_name
             """)
             
             standards = [Standard.from_db_row(row) for row in cursor.fetchall()]
@@ -67,22 +69,24 @@ class StandardService:
         cursor = conn.cursor()
         
         try:
-            # Construir la consulta dinámicamente basada en los campos proporcionados
             update_fields = []
             params = []
             
             if name is not None:
-                update_fields.append("stdr_name = %s")
+                update_fields.append("strnd_name = %s")
                 params.append(name)
             if description is not None:
-                update_fields.append("stdr_description = %s")
+                update_fields.append("strnd_description = %s")
                 params.append(description)
             if version is not None:
-                update_fields.append("stdr_version = %s")
+                update_fields.append("strnd_version = %s")
                 params.append(version)
             if status is not None:
-                update_fields.append("stdr_status = %s")
+                update_fields.append("strnd_status = %s")
                 params.append(status)
+                
+            # Actualizar la fecha de modificación
+            update_fields.append("strnd_date_update = CURRENT_TIMESTAMP")
                 
             if not update_fields:
                 return None
@@ -92,8 +96,9 @@ class StandardService:
             query = f"""
                 UPDATE ge_standards 
                 SET {", ".join(update_fields)}
-                WHERE stdr_id = %s
-                RETURNING stdr_id, stdr_name, stdr_description, stdr_version, stdr_status
+                WHERE strnd_id = %s
+                RETURNING strnd_id, strnd_name, strnd_description, strnd_version, 
+                          strnd_status, strnd_date_create, strnd_date_update
             """
             
             cursor.execute(query, params)
@@ -116,10 +121,20 @@ class StandardService:
         cursor = conn.cursor()
         
         try:
+            # Primero verificamos si hay parámetros asociados
+            cursor.execute("""
+                SELECT COUNT(*) FROM ge_parameters WHERE param_stdr_id = %s
+            """, (standard_id,))
+            
+            count = cursor.fetchone()[0]
+            if count > 0:
+                raise Exception("No se puede eliminar el estándar porque tiene parámetros asociados")
+            
+            # Si no hay parámetros, procedemos con la eliminación
             cursor.execute("""
                 DELETE FROM ge_standards
-                WHERE stdr_id = %s
-                RETURNING stdr_id
+                WHERE strnd_id = %s
+                RETURNING strnd_id
             """, (standard_id,))
             
             deleted = cursor.fetchone()

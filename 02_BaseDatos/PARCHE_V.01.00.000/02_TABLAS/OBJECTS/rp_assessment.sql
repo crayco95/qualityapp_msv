@@ -13,11 +13,11 @@ CREATE TABLE rp_assessment (
     assmt_id 					SERIAL 			NOT NULL,
     assmt_software_id 			INT    			NOT NULL,
     assmt_standard_id 			INT   			NOT NULL,
-	assmt_prcnt_id 				INT   			NOT NULL,
-	assmt_date_create 			TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-	assmt_date_update			TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	assmt_param_id 				INT   			NOT NULL,
 	assmt_score					DECIMAL(5,2),
-	assmt_classification_id		INT
+	assmt_classification_id		INT,
+	assmt_date_create 			TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	assmt_date_update			TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 	
 )
 WITH (
@@ -41,7 +41,7 @@ COMMENT ON COLUMN rp_assessment.assmt_software_id
 COMMENT ON COLUMN rp_assessment.assmt_standard_id
     IS 'ID DE LA NORMA REFERENCIADA';
 	
-COMMENT ON COLUMN rp_assessment.assmt_prcnt_id
+COMMENT ON COLUMN rp_assessment.assmt_param_id
     IS 'ID DEL PARTICIPANTE EVALUADOR';
 
 COMMENT ON COLUMN rp_assessment.assmt_date_create

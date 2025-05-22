@@ -1,0 +1,136 @@
+Date : 2025-05-22 11:48:45
+Directory : d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos
+Total : 70 files,  542 codes, 422 comments, 336 blanks, all 1300 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| MS SQL   |         67 |        468 |        409 |        324 |      1,201 |
+| Batch    |          1 |         48 |         13 |          5 |         66 |
+| Markdown |          2 |         26 |          0 |          7 |         33 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++-------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                        | files      | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                           |         70 |        542 |        422 |        336 |      1,300 |
+| . (Files)                                                                                                   |          1 |         48 |         13 |          5 |         66 |
+| DATABASE_SCHEMA                                                                                             |          8 |         49 |         40 |         44 |        133 |
+| DATABASE_SCHEMA (Files)                                                                                     |          4 |         21 |          8 |         13 |         42 |
+| DATABASE_SCHEMA\00_SCHEMA                                                                                   |          4 |         28 |         32 |         31 |         91 |
+| PARCHE_V.01.00.000                                                                                          |         61 |        445 |        369 |        287 |      1,101 |
+| PARCHE_V.01.00.000 (Files)                                                                                  |          6 |         48 |         10 |         23 |         81 |
+| PARCHE_V.01.00.000\01_SECUENCIAS                                                                            |          2 |          1 |          4 |          4 |          9 |
+| PARCHE_V.01.00.000\01_SECUENCIAS (Files)                                                                    |          1 |          1 |          4 |          2 |          7 |
+| PARCHE_V.01.00.000\01_SECUENCIAS\OBJECTS                                                                    |          1 |          0 |          0 |          2 |          2 |
+| PARCHE_V.01.00.000\02_TABLAS                                                                                |         12 |        277 |        111 |        158 |        546 |
+| PARCHE_V.01.00.000\02_TABLAS (Files)                                                                        |          1 |          1 |          1 |          1 |          3 |
+| PARCHE_V.01.00.000\02_TABLAS\OBJECTS                                                                        |         11 |        276 |        110 |        157 |        543 |
+| PARCHE_V.01.00.000\03_ALTERS                                                                                |          2 |          1 |          2 |          1 |          4 |
+| PARCHE_V.01.00.000\03_ALTERS (Files)                                                                        |          1 |          1 |          1 |          0 |          2 |
+| PARCHE_V.01.00.000\03_ALTERS\OBJECTS                                                                        |          1 |          0 |          1 |          1 |          2 |
+| PARCHE_V.01.00.000\03_CONSTRAINTS                                                                           |          2 |          1 |          1 |          4 |          6 |
+| PARCHE_V.01.00.000\03_CONSTRAINTS (Files)                                                                   |          1 |          1 |          0 |          2 |          3 |
+| PARCHE_V.01.00.000\03_CONSTRAINTS\OBJECTS                                                                   |          1 |          0 |          1 |          2 |          3 |
+| PARCHE_V.01.00.000\03_FOREIGN_KEY                                                                           |          8 |         33 |         60 |         52 |        145 |
+| PARCHE_V.01.00.000\03_FOREIGN_KEY (Files)                                                                   |          1 |          1 |          0 |          2 |          3 |
+| PARCHE_V.01.00.000\03_FOREIGN_KEY\OBJECTS                                                                   |          7 |         32 |         60 |         50 |        142 |
+| PARCHE_V.01.00.000\03_PRIMARY_KEY                                                                           |         12 |         31 |        130 |         25 |        186 |
+| PARCHE_V.01.00.000\03_PRIMARY_KEY (Files)                                                                   |          1 |          1 |          0 |          2 |          3 |
+| PARCHE_V.01.00.000\03_PRIMARY_KEY\OBJECTS                                                                   |         11 |         30 |        130 |         23 |        183 |
+| PARCHE_V.01.00.000\04_TIPOS                                                                                 |          2 |          1 |          1 |          3 |          5 |
+| PARCHE_V.01.00.000\04_TIPOS (Files)                                                                         |          1 |          1 |          1 |          1 |          3 |
+| PARCHE_V.01.00.000\04_TIPOS\OBJECTS                                                                         |          1 |          0 |          0 |          2 |          2 |
+| PARCHE_V.01.00.000\05_VISTAS                                                                                |          2 |          1 |          2 |          1 |          4 |
+| PARCHE_V.01.00.000\05_VISTAS (Files)                                                                        |          1 |          1 |          1 |          1 |          3 |
+| PARCHE_V.01.00.000\05_VISTAS\OBJECTS                                                                        |          1 |          0 |          1 |          0 |          1 |
+| PARCHE_V.01.00.000\06_FUNCIONES                                                                             |          2 |          1 |          1 |          6 |          8 |
+| PARCHE_V.01.00.000\06_FUNCIONES (Files)                                                                     |          1 |          1 |          1 |          5 |          7 |
+| PARCHE_V.01.00.000\06_FUNCIONES\OBJECTS                                                                     |          1 |          0 |          0 |          1 |          1 |
+| PARCHE_V.01.00.000\07_DATOS                                                                                 |          5 |         34 |          5 |          4 |         43 |
+| PARCHE_V.01.00.000\07_DATOS (Files)                                                                         |          1 |          1 |          0 |          0 |          1 |
+| PARCHE_V.01.00.000\07_DATOS\OBJECTS                                                                         |          4 |         33 |          5 |          4 |         42 |
+| PARCHE_V.01.00.000\08_CHECKS                                                                                |          5 |         10 |         30 |          3 |         43 |
+| PARCHE_V.01.00.000\08_CHECKS (Files)                                                                        |          1 |          1 |          0 |          0 |          1 |
+| PARCHE_V.01.00.000\08_CHECKS\OBJECTS                                                                        |          4 |          9 |         30 |          3 |         42 |
+| PARCHE_V.01.00.000\09_VERSION                                                                               |          1 |          6 |         12 |          3 |         21 |
++-------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-------------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                                                                                    | language | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\DATABASE_SCHEMA\00_SCHEMA\00_INSTALADOR.sql                       | MS SQL   |          3 |          7 |          7 |         17 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\DATABASE_SCHEMA\00_SCHEMA\00_UNISTALL.sql                         | MS SQL   |          2 |          6 |          4 |         12 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\DATABASE_SCHEMA\00_SCHEMA\01_USER.sql                             | MS SQL   |          8 |          6 |          4 |         18 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\DATABASE_SCHEMA\00_SCHEMA\02_SCHEMAS.sql                          | MS SQL   |         15 |         13 |         16 |         44 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\DATABASE_SCHEMA\INSTALADOR_GENERAL.sql                            | MS SQL   |          2 |          5 |          7 |         14 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\DATABASE_SCHEMA\INSTALL_SCHEMAS.sql                               | MS SQL   |          1 |          1 |          1 |          3 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\DATABASE_SCHEMA\README.md                                         | Markdown |          9 |          0 |          3 |         12 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\DATABASE_SCHEMA\SETUP.sql                                         | MS SQL   |          9 |          2 |          2 |         13 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\INSTALL_ALL.bat                                                   | Batch    |         48 |         13 |          5 |         66 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\01_SECUENCIAS\INSTALL_SECUENCIAS.sql           | MS SQL   |          1 |          4 |          2 |          7 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\01_SECUENCIAS\OBJECTS\INSTALL.sql              | MS SQL   |          0 |          0 |          2 |          2 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\02_TABLAS\INSTALL_TABLAS.sql                   | MS SQL   |          1 |          1 |          1 |          3 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\02_TABLAS\OBJECTS\INSTALL.sql                  | MS SQL   |         10 |          0 |          5 |         15 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\02_TABLAS\OBJECTS\au_user_act_log.sql          | MS SQL   |         26 |         11 |         16 |         53 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\02_TABLAS\OBJECTS\au_users.sql                 | MS SQL   |         27 |         11 |         16 |         54 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\02_TABLAS\OBJECTS\ge_clasification.sql         | MS SQL   |         22 |         11 |         15 |         48 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\02_TABLAS\OBJECTS\ge_parameters.sql            | MS SQL   |         27 |         11 |         15 |         53 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\02_TABLAS\OBJECTS\ge_participants.sql          | MS SQL   |         28 |         11 |         15 |         54 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\02_TABLAS\OBJECTS\ge_software.sql              | MS SQL   |         34 |         11 |         16 |         61 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\02_TABLAS\OBJECTS\ge_standards.sql             | MS SQL   |         21 |         11 |         13 |         45 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\02_TABLAS\OBJECTS\ge_subcategory.sql           | MS SQL   |         22 |         11 |         13 |         46 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\02_TABLAS\OBJECTS\rp_assessment.sql            | MS SQL   |         30 |         11 |         17 |         58 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\02_TABLAS\OBJECTS\rp_results.sql               | MS SQL   |         29 |         11 |         16 |         56 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\03_ALTERS\INSTALL_ALTERS.sql                   | MS SQL   |          1 |          1 |          0 |          2 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\03_ALTERS\OBJECTS\INSTALL.sql                  | MS SQL   |          0 |          1 |          1 |          2 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\03_CONSTRAINTS\INSTALL_CONS.sql                | MS SQL   |          1 |          0 |          2 |          3 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\03_CONSTRAINTS\OBJECTS\INSTALL.sql             | MS SQL   |          0 |          1 |          2 |          3 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\03_FOREIGN_KEY\INSTALL_FOREIGN.sql             | MS SQL   |          1 |          0 |          2 |          3 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\03_FOREIGN_KEY\OBJECTS\INSTALL.sql             | MS SQL   |          6 |          0 |          3 |          9 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\03_FOREIGN_KEY\OBJECTS\au_user_act_log_fk.sql  | MS SQL   |          2 |         10 |          8 |         20 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\03_FOREIGN_KEY\OBJECTS\ge_parameters_fk.sql    | MS SQL   |          4 |         10 |          9 |         23 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\03_FOREIGN_KEY\OBJECTS\ge_participants_fk.sql  | MS SQL   |          4 |         10 |          6 |         20 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\03_FOREIGN_KEY\OBJECTS\ge_subcategory_fk.sql   | MS SQL   |          2 |         10 |          7 |         19 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\03_FOREIGN_KEY\OBJECTS\rp_assessment_fk.sql    | MS SQL   |          8 |         10 |          8 |         26 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\03_FOREIGN_KEY\OBJECTS\rp_results_fk.sql       | MS SQL   |          6 |         10 |          9 |         25 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\03_PRIMARY_KEY\INSTALL_PKS.sql                 | MS SQL   |          1 |          0 |          2 |          3 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\03_PRIMARY_KEY\OBJECTS\INSTALL.sql             | MS SQL   |         10 |          0 |          3 |         13 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\03_PRIMARY_KEY\OBJECTS\pk_au_user_act_log.sql  | MS SQL   |          2 |         13 |          2 |         17 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\03_PRIMARY_KEY\OBJECTS\pk_au_users.sql         | MS SQL   |          2 |         13 |          2 |         17 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\03_PRIMARY_KEY\OBJECTS\pk_ge_clasification.sql | MS SQL   |          2 |         13 |          2 |         17 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\03_PRIMARY_KEY\OBJECTS\pk_ge_parameters.sql    | MS SQL   |          2 |         13 |          2 |         17 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\03_PRIMARY_KEY\OBJECTS\pk_ge_participants.sql  | MS SQL   |          2 |         13 |          2 |         17 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\03_PRIMARY_KEY\OBJECTS\pk_ge_software.sql      | MS SQL   |          2 |         13 |          2 |         17 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\03_PRIMARY_KEY\OBJECTS\pk_ge_standards.sql     | MS SQL   |          2 |         13 |          2 |         17 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\03_PRIMARY_KEY\OBJECTS\pk_ge_subcategory.sql   | MS SQL   |          2 |         13 |          2 |         17 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\03_PRIMARY_KEY\OBJECTS\pk_rp_assessment.sql    | MS SQL   |          2 |         13 |          2 |         17 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\03_PRIMARY_KEY\OBJECTS\pk_rp_results.sql       | MS SQL   |          2 |         13 |          2 |         17 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\04_TIPOS\INSTALL_TIPOS.sql                     | MS SQL   |          1 |          1 |          1 |          3 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\04_TIPOS\OBJECTS\INSTALL.sql                   | MS SQL   |          0 |          0 |          2 |          2 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\05_VISTAS\INSTALL_VISTAS.sql                   | MS SQL   |          1 |          1 |          1 |          3 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\05_VISTAS\OBJECTS\INSTALL.sql                  | MS SQL   |          0 |          1 |          0 |          1 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\06_FUNCIONES\INSTALL_FUNCIONES.sql             | MS SQL   |          1 |          1 |          5 |          7 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\06_FUNCIONES\OBJECTS\INSTALL.sql               | MS SQL   |          0 |          0 |          1 |          1 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\07_DATOS\INSTALL_DATOS.sql                     | MS SQL   |          1 |          0 |          0 |          1 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\07_DATOS\OBJECTS\INSTALL.sql                   | MS SQL   |          1 |          0 |          0 |          1 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\07_DATOS\OBJECTS\au_user_admin_19052025.sql    | MS SQL   |          2 |          0 |          0 |          2 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\07_DATOS\OBJECTS\ge_parameters_22052025.sql    | MS SQL   |         25 |          5 |          4 |         34 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\07_DATOS\OBJECTS\ge_standards_22052025.sql     | MS SQL   |          5 |          0 |          0 |          5 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\08_CHECKS\INSTALL_CHECKS.sql                   | MS SQL   |          1 |          0 |          0 |          1 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\08_CHECKS\OBJECTS\INSTALL.sql                  | MS SQL   |          3 |          0 |          0 |          3 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\08_CHECKS\OBJECTS\ch_au_users.sql              | MS SQL   |          2 |         10 |          1 |         13 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\08_CHECKS\OBJECTS\ch_ge_parameters.sql         | MS SQL   |          2 |         10 |          1 |         13 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\08_CHECKS\OBJECTS\ch_rp_results.sql            | MS SQL   |          2 |         10 |          1 |         13 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\09_VERSION\INSTALL_VERSION_APPS.sql            | MS SQL   |          6 |         12 |          3 |         21 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\INSTALADOR_GENERAL.sql                         | MS SQL   |          4 |          7 |          8 |         19 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\INSTALL_EXTENSION.sql                          | MS SQL   |          2 |          0 |          1 |          3 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\INSTALL_OBJECTS.sql                            | MS SQL   |         12 |          1 |          4 |         17 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\INSTALL_PRIVILEGES.sql                         | MS SQL   |          4 |          0 |          4 |          8 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\README.md                                      | Markdown |         17 |          0 |          4 |         21 |
+| d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\SETUP.sql                                      | MS SQL   |          9 |          2 |          2 |         13 |
+| Total                                                                                                       |          |        542 |        422 |        336 |      1,300 |
++-------------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+

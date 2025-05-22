@@ -1,0 +1,127 @@
+"filename", "language", "Batch", "Markdown", "MS SQL", "YAML", "Properties", "Python", "Docker", "XML", "comment", "blank", "total"
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\DATABASE_SCHEMA\00_SCHEMA\00_INSTALADOR.sql", "MS SQL", 0, 0, 3, 0, 0, 0, 0, 0, 7, 7, 17
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\DATABASE_SCHEMA\00_SCHEMA\00_UNISTALL.sql", "MS SQL", 0, 0, 2, 0, 0, 0, 0, 0, 6, 4, 12
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\DATABASE_SCHEMA\00_SCHEMA\01_USER.sql", "MS SQL", 0, 0, 8, 0, 0, 0, 0, 0, 6, 4, 18
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\DATABASE_SCHEMA\00_SCHEMA\02_SCHEMAS.sql", "MS SQL", 0, 0, 15, 0, 0, 0, 0, 0, 13, 16, 44
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\DATABASE_SCHEMA\INSTALADOR_GENERAL.sql", "MS SQL", 0, 0, 2, 0, 0, 0, 0, 0, 5, 7, 14
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\DATABASE_SCHEMA\INSTALL_SCHEMAS.sql", "MS SQL", 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 3
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\DATABASE_SCHEMA\README.md", "Markdown", 0, 9, 0, 0, 0, 0, 0, 0, 0, 3, 12
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\DATABASE_SCHEMA\SETUP.sql", "MS SQL", 0, 0, 9, 0, 0, 0, 0, 0, 2, 2, 13
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\INSTALL_ALL.bat", "Batch", 48, 0, 0, 0, 0, 0, 0, 0, 13, 5, 66
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\01_SECUENCIAS\INSTALL_SECUENCIAS.sql", "MS SQL", 0, 0, 1, 0, 0, 0, 0, 0, 4, 2, 7
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\01_SECUENCIAS\OBJECTS\INSTALL.sql", "MS SQL", 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\02_TABLAS\INSTALL_TABLAS.sql", "MS SQL", 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 3
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\02_TABLAS\OBJECTS\INSTALL.sql", "MS SQL", 0, 0, 10, 0, 0, 0, 0, 0, 0, 5, 15
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\02_TABLAS\OBJECTS\au_user_act_log.sql", "MS SQL", 0, 0, 26, 0, 0, 0, 0, 0, 11, 16, 53
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\02_TABLAS\OBJECTS\au_users.sql", "MS SQL", 0, 0, 27, 0, 0, 0, 0, 0, 11, 16, 54
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\02_TABLAS\OBJECTS\ge_clasification.sql", "MS SQL", 0, 0, 22, 0, 0, 0, 0, 0, 11, 15, 48
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\02_TABLAS\OBJECTS\ge_parameters.sql", "MS SQL", 0, 0, 27, 0, 0, 0, 0, 0, 11, 15, 53
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\02_TABLAS\OBJECTS\ge_participants.sql", "MS SQL", 0, 0, 28, 0, 0, 0, 0, 0, 11, 15, 54
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\02_TABLAS\OBJECTS\ge_software.sql", "MS SQL", 0, 0, 34, 0, 0, 0, 0, 0, 11, 16, 61
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\02_TABLAS\OBJECTS\ge_standards.sql", "MS SQL", 0, 0, 21, 0, 0, 0, 0, 0, 11, 13, 45
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\02_TABLAS\OBJECTS\ge_subcategory.sql", "MS SQL", 0, 0, 22, 0, 0, 0, 0, 0, 11, 13, 46
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\02_TABLAS\OBJECTS\rp_assessment.sql", "MS SQL", 0, 0, 30, 0, 0, 0, 0, 0, 11, 17, 58
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\02_TABLAS\OBJECTS\rp_results.sql", "MS SQL", 0, 0, 29, 0, 0, 0, 0, 0, 11, 16, 56
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\03_ALTERS\INSTALL_ALTERS.sql", "MS SQL", 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 2
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\03_ALTERS\OBJECTS\INSTALL.sql", "MS SQL", 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 2
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\03_CONSTRAINTS\INSTALL_CONS.sql", "MS SQL", 0, 0, 1, 0, 0, 0, 0, 0, 0, 2, 3
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\03_CONSTRAINTS\OBJECTS\INSTALL.sql", "MS SQL", 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\03_FOREIGN_KEY\INSTALL_FOREIGN.sql", "MS SQL", 0, 0, 1, 0, 0, 0, 0, 0, 0, 2, 3
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\03_FOREIGN_KEY\OBJECTS\INSTALL.sql", "MS SQL", 0, 0, 6, 0, 0, 0, 0, 0, 0, 3, 9
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\03_FOREIGN_KEY\OBJECTS\au_user_act_log_fk.sql", "MS SQL", 0, 0, 2, 0, 0, 0, 0, 0, 10, 8, 20
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\03_FOREIGN_KEY\OBJECTS\ge_parameters_fk.sql", "MS SQL", 0, 0, 4, 0, 0, 0, 0, 0, 10, 9, 23
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\03_FOREIGN_KEY\OBJECTS\ge_participants_fk.sql", "MS SQL", 0, 0, 4, 0, 0, 0, 0, 0, 10, 6, 20
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\03_FOREIGN_KEY\OBJECTS\ge_subcategory_fk.sql", "MS SQL", 0, 0, 2, 0, 0, 0, 0, 0, 10, 7, 19
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\03_FOREIGN_KEY\OBJECTS\rp_assessment_fk.sql", "MS SQL", 0, 0, 8, 0, 0, 0, 0, 0, 10, 8, 26
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\03_FOREIGN_KEY\OBJECTS\rp_results_fk.sql", "MS SQL", 0, 0, 6, 0, 0, 0, 0, 0, 10, 9, 25
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\03_PRIMARY_KEY\INSTALL_PKS.sql", "MS SQL", 0, 0, 1, 0, 0, 0, 0, 0, 0, 2, 3
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\03_PRIMARY_KEY\OBJECTS\INSTALL.sql", "MS SQL", 0, 0, 10, 0, 0, 0, 0, 0, 0, 3, 13
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\03_PRIMARY_KEY\OBJECTS\pk_au_user_act_log.sql", "MS SQL", 0, 0, 2, 0, 0, 0, 0, 0, 13, 2, 17
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\03_PRIMARY_KEY\OBJECTS\pk_au_users.sql", "MS SQL", 0, 0, 2, 0, 0, 0, 0, 0, 13, 2, 17
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\03_PRIMARY_KEY\OBJECTS\pk_ge_clasification.sql", "MS SQL", 0, 0, 2, 0, 0, 0, 0, 0, 13, 2, 17
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\03_PRIMARY_KEY\OBJECTS\pk_ge_parameters.sql", "MS SQL", 0, 0, 2, 0, 0, 0, 0, 0, 13, 2, 17
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\03_PRIMARY_KEY\OBJECTS\pk_ge_participants.sql", "MS SQL", 0, 0, 2, 0, 0, 0, 0, 0, 13, 2, 17
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\03_PRIMARY_KEY\OBJECTS\pk_ge_software.sql", "MS SQL", 0, 0, 2, 0, 0, 0, 0, 0, 13, 2, 17
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\03_PRIMARY_KEY\OBJECTS\pk_ge_standards.sql", "MS SQL", 0, 0, 2, 0, 0, 0, 0, 0, 13, 2, 17
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\03_PRIMARY_KEY\OBJECTS\pk_ge_subcategory.sql", "MS SQL", 0, 0, 2, 0, 0, 0, 0, 0, 13, 2, 17
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\03_PRIMARY_KEY\OBJECTS\pk_rp_assessment.sql", "MS SQL", 0, 0, 2, 0, 0, 0, 0, 0, 13, 2, 17
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\03_PRIMARY_KEY\OBJECTS\pk_rp_results.sql", "MS SQL", 0, 0, 2, 0, 0, 0, 0, 0, 13, 2, 17
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\04_TIPOS\INSTALL_TIPOS.sql", "MS SQL", 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 3
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\04_TIPOS\OBJECTS\INSTALL.sql", "MS SQL", 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\05_VISTAS\INSTALL_VISTAS.sql", "MS SQL", 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 3
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\05_VISTAS\OBJECTS\INSTALL.sql", "MS SQL", 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\06_FUNCIONES\INSTALL_FUNCIONES.sql", "MS SQL", 0, 0, 1, 0, 0, 0, 0, 0, 1, 5, 7
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\06_FUNCIONES\OBJECTS\INSTALL.sql", "MS SQL", 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\07_DATOS\INSTALL_DATOS.sql", "MS SQL", 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\07_DATOS\OBJECTS\INSTALL.sql", "MS SQL", 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\07_DATOS\OBJECTS\au_user_admin_19052025.sql", "MS SQL", 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 2
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\07_DATOS\OBJECTS\ge_parameters_22052025.sql", "MS SQL", 0, 0, 25, 0, 0, 0, 0, 0, 5, 4, 34
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\07_DATOS\OBJECTS\ge_standards_22052025.sql", "MS SQL", 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 5
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\08_CHECKS\INSTALL_CHECKS.sql", "MS SQL", 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\08_CHECKS\OBJECTS\INSTALL.sql", "MS SQL", 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 3
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\08_CHECKS\OBJECTS\ch_au_users.sql", "MS SQL", 0, 0, 2, 0, 0, 0, 0, 0, 10, 1, 13
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\08_CHECKS\OBJECTS\ch_ge_parameters.sql", "MS SQL", 0, 0, 2, 0, 0, 0, 0, 0, 10, 1, 13
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\08_CHECKS\OBJECTS\ch_rp_results.sql", "MS SQL", 0, 0, 2, 0, 0, 0, 0, 0, 10, 1, 13
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\09_VERSION\INSTALL_VERSION_APPS.sql", "MS SQL", 0, 0, 6, 0, 0, 0, 0, 0, 12, 3, 21
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\INSTALADOR_GENERAL.sql", "MS SQL", 0, 0, 4, 0, 0, 0, 0, 0, 7, 8, 19
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\INSTALL_EXTENSION.sql", "MS SQL", 0, 0, 2, 0, 0, 0, 0, 0, 0, 1, 3
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\INSTALL_OBJECTS.sql", "MS SQL", 0, 0, 12, 0, 0, 0, 0, 0, 1, 4, 17
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\INSTALL_PRIVILEGES.sql", "MS SQL", 0, 0, 4, 0, 0, 0, 0, 0, 0, 4, 8
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\README.md", "Markdown", 0, 17, 0, 0, 0, 0, 0, 0, 0, 4, 21
+"d:\DOCUMENTOS\qualityapp_msv\02_BaseDatos\PARCHE_V.01.00.000\SETUP.sql", "MS SQL", 0, 0, 9, 0, 0, 0, 0, 0, 2, 2, 13
+"d:\DOCUMENTOS\qualityapp_msv\03_Backend\.env", "Properties", 0, 0, 0, 0, -5, 0, 0, 0, -2, -2, -9
+"d:\DOCUMENTOS\qualityapp_msv\03_Backend\auth_service\.idea\auth_service.iml", "XML", 0, 0, 0, 0, 0, 0, 0, -21, 0, 0, -21
+"d:\DOCUMENTOS\qualityapp_msv\03_Backend\auth_service\.idea\inspectionProfiles\profiles_settings.xml", "XML", 0, 0, 0, 0, 0, 0, 0, -6, 0, 0, -6
+"d:\DOCUMENTOS\qualityapp_msv\03_Backend\auth_service\.idea\misc.xml", "XML", 0, 0, 0, 0, 0, 0, 0, -6, 0, 0, -6
+"d:\DOCUMENTOS\qualityapp_msv\03_Backend\auth_service\.idea\modules.xml", "XML", 0, 0, 0, 0, 0, 0, 0, -8, 0, 0, -8
+"d:\DOCUMENTOS\qualityapp_msv\03_Backend\auth_service\.idea\vcs.xml", "XML", 0, 0, 0, 0, 0, 0, 0, -6, 0, 0, -6
+"d:\DOCUMENTOS\qualityapp_msv\03_Backend\auth_service\Dockerfile", "Docker", 0, 0, 0, 0, 0, 0, -10, 0, -8, -7, -25
+"d:\DOCUMENTOS\qualityapp_msv\03_Backend\auth_service\app\__init__.py", "Python", 0, 0, 0, 0, 0, -13, 0, 0, 0, -3, -16
+"d:\DOCUMENTOS\qualityapp_msv\03_Backend\auth_service\app\config.py", "Python", 0, 0, 0, 0, 0, -9, 0, 0, -1, -5, -15
+"d:\DOCUMENTOS\qualityapp_msv\03_Backend\auth_service\app\controllers\activity_routes.py", "Python", 0, 0, 0, 0, 0, -23, 0, 0, -2, -7, -32
+"d:\DOCUMENTOS\qualityapp_msv\03_Backend\auth_service\app\controllers\auth_routes.py", "Python", 0, 0, 0, 0, 0, -79, 0, 0, -11, -23, -113
+"d:\DOCUMENTOS\qualityapp_msv\03_Backend\auth_service\app\controllers\user_routes.py", "Python", 0, 0, 0, 0, 0, -79, 0, 0, -7, -28, -114
+"d:\DOCUMENTOS\qualityapp_msv\03_Backend\auth_service\app\db.py", "Python", 0, 0, 0, 0, 0, -16, 0, 0, 0, -1, -17
+"d:\DOCUMENTOS\qualityapp_msv\03_Backend\auth_service\app\services\log_manager.py", "Python", 0, 0, 0, 0, 0, -9, 0, 0, -1, -2, -12
+"d:\DOCUMENTOS\qualityapp_msv\03_Backend\auth_service\app\services\middleware.py", "Python", 0, 0, 0, 0, 0, -12, 0, 0, 0, -3, -15
+"d:\DOCUMENTOS\qualityapp_msv\03_Backend\auth_service\app\services\security.py", "Python", 0, 0, 0, 0, 0, -12, 0, 0, 0, -5, -17
+"d:\DOCUMENTOS\qualityapp_msv\03_Backend\auth_service\run.py", "Python", 0, 0, 0, 0, 0, -4, 0, 0, 0, -2, -6
+"d:\DOCUMENTOS\qualityapp_msv\03_Backend\auth_service\tests\test_auth_service.py", "Python", 0, 0, 0, 0, 0, -35, 0, 0, 0, -6, -41
+"d:\DOCUMENTOS\qualityapp_msv\03_Backend\auth_service\tests\test_bcrypt.py", "Python", 0, 0, 0, 0, 0, -7, 0, 0, 0, -3, -10
+"d:\DOCUMENTOS\qualityapp_msv\03_Backend\docker-compose.yml", "YAML", 0, 0, 0, -27, 0, 0, 0, 0, 0, -2, -29
+"d:\DOCUMENTOS\qualityapp_msv\03_Backend\quality_service\.idea\inspectionProfiles\profiles_settings.xml", "XML", 0, 0, 0, 0, 0, 0, 0, -6, 0, 0, -6
+"d:\DOCUMENTOS\qualityapp_msv\03_Backend\quality_service\.idea\misc.xml", "XML", 0, 0, 0, 0, 0, 0, 0, -6, 0, 0, -6
+"d:\DOCUMENTOS\qualityapp_msv\03_Backend\quality_service\.idea\modules.xml", "XML", 0, 0, 0, 0, 0, 0, 0, -8, 0, 0, -8
+"d:\DOCUMENTOS\qualityapp_msv\03_Backend\quality_service\.idea\quality_service.iml", "XML", 0, 0, 0, 0, 0, 0, 0, -21, 0, 0, -21
+"d:\DOCUMENTOS\qualityapp_msv\03_Backend\quality_service\.idea\vcs.xml", "XML", 0, 0, 0, 0, 0, 0, 0, -6, 0, 0, -6
+"d:\DOCUMENTOS\qualityapp_msv\03_Backend\quality_service\Dockerfile", "Docker", 0, 0, 0, 0, 0, 0, -10, 0, -8, -7, -25
+"d:\DOCUMENTOS\qualityapp_msv\03_Backend\quality_service\app\__init__.py", "Python", 0, 0, 0, 0, 0, -24, 0, 0, -3, -7, -34
+"d:\DOCUMENTOS\qualityapp_msv\03_Backend\quality_service\app\config.py", "Python", 0, 0, 0, 0, 0, -9, 0, 0, -1, -5, -15
+"d:\DOCUMENTOS\qualityapp_msv\03_Backend\quality_service\app\controllers\__init__.py", "Python", 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, -1
+"d:\DOCUMENTOS\qualityapp_msv\03_Backend\quality_service\app\controllers\assessment_routes.py", "Python", 0, 0, 0, 0, 0, -84, 0, 0, 0, -11, -95
+"d:\DOCUMENTOS\qualityapp_msv\03_Backend\quality_service\app\controllers\classification_routes.py", "Python", 0, 0, 0, 0, 0, -85, 0, 0, 0, -17, -102
+"d:\DOCUMENTOS\qualityapp_msv\03_Backend\quality_service\app\controllers\parameter_routes.py", "Python", 0, 0, 0, 0, 0, -92, 0, 0, 0, -23, -115
+"d:\DOCUMENTOS\qualityapp_msv\03_Backend\quality_service\app\controllers\participant_routes.py", "Python", 0, 0, 0, 0, 0, -84, 0, 0, -6, -21, -111
+"d:\DOCUMENTOS\qualityapp_msv\03_Backend\quality_service\app\controllers\result_routes.py", "Python", 0, 0, 0, 0, 0, -60, 0, 0, 0, -10, -70
+"d:\DOCUMENTOS\qualityapp_msv\03_Backend\quality_service\app\controllers\software_routes.py", "Python", 0, 0, 0, 0, 0, -94, 0, 0, -5, -23, -122
+"d:\DOCUMENTOS\qualityapp_msv\03_Backend\quality_service\app\controllers\standard_routes.py", "Python", 0, 0, 0, 0, 0, -84, 0, 0, 0, -23, -107
+"d:\DOCUMENTOS\qualityapp_msv\03_Backend\quality_service\app\controllers\subcategory_routes.py", "Python", 0, 0, 0, 0, 0, -54, 0, 0, 0, -10, -64
+"d:\DOCUMENTOS\qualityapp_msv\03_Backend\quality_service\app\db.py", "Python", 0, 0, 0, 0, 0, -16, 0, 0, 0, -1, -17
+"d:\DOCUMENTOS\qualityapp_msv\03_Backend\quality_service\app\models\assessment.py", "Python", 0, 0, 0, 0, 0, -34, 0, 0, 0, -2, -36
+"d:\DOCUMENTOS\qualityapp_msv\03_Backend\quality_service\app\models\classification.py", "Python", 0, 0, 0, 0, 0, -27, 0, 0, 0, -2, -29
+"d:\DOCUMENTOS\qualityapp_msv\03_Backend\quality_service\app\models\parameter.py", "Python", 0, 0, 0, 0, 0, -37, 0, 0, 0, -2, -39
+"d:\DOCUMENTOS\qualityapp_msv\03_Backend\quality_service\app\models\participant.py", "Python", 0, 0, 0, 0, 0, -30, 0, 0, 0, -2, -32
+"d:\DOCUMENTOS\qualityapp_msv\03_Backend\quality_service\app\models\result.py", "Python", 0, 0, 0, 0, 0, -29, 0, 0, 0, -3, -32
+"d:\DOCUMENTOS\qualityapp_msv\03_Backend\quality_service\app\models\software.py", "Python", 0, 0, 0, 0, 0, -31, 0, 0, 0, -2, -33
+"d:\DOCUMENTOS\qualityapp_msv\03_Backend\quality_service\app\models\standard.py", "Python", 0, 0, 0, 0, 0, -30, 0, 0, 0, -2, -32
+"d:\DOCUMENTOS\qualityapp_msv\03_Backend\quality_service\app\models\subcategory.py", "Python", 0, 0, 0, 0, 0, -27, 0, 0, 0, -2, -29
+"d:\DOCUMENTOS\qualityapp_msv\03_Backend\quality_service\app\services\assessment_service.py", "Python", 0, 0, 0, 0, 0, -207, 0, 0, -8, -43, -258
+"d:\DOCUMENTOS\qualityapp_msv\03_Backend\quality_service\app\services\classification_service.py", "Python", 0, 0, 0, 0, 0, -143, 0, 0, -2, -29, -174
+"d:\DOCUMENTOS\qualityapp_msv\03_Backend\quality_service\app\services\parameter_service.py", "Python", 0, 0, 0, 0, 0, -151, 0, 0, -4, -31, -186
+"d:\DOCUMENTOS\qualityapp_msv\03_Backend\quality_service\app\services\participant_service.py", "Python", 0, 0, 0, 0, 0, -110, 0, 0, 0, -24, -134
+"d:\DOCUMENTOS\qualityapp_msv\03_Backend\quality_service\app\services\result_service.py", "Python", 0, 0, 0, 0, 0, -105, 0, 0, 0, -23, -128
+"d:\DOCUMENTOS\qualityapp_msv\03_Backend\quality_service\app\services\software_service.py", "Python", 0, 0, 0, 0, 0, -117, 0, 0, 0, -23, -140
+"d:\DOCUMENTOS\qualityapp_msv\03_Backend\quality_service\app\services\standard_service.py", "Python", 0, 0, 0, 0, 0, -119, 0, 0, -3, -27, -149
+"d:\DOCUMENTOS\qualityapp_msv\03_Backend\quality_service\app\services\subcategory_service.py", "Python", 0, 0, 0, 0, 0, -109, 0, 0, 0, -24, -133
+"d:\DOCUMENTOS\qualityapp_msv\03_Backend\quality_service\run.py", "Python", 0, 0, 0, 0, 0, -4, 0, 0, 0, -2, -6
+"Total", "-", 48, 26, 468, -27, -5, -2294, -20, -94, 350, -165, -1713

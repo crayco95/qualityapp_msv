@@ -13,6 +13,8 @@ CREATE TABLE ge_standards (
     strnd_id 					SERIAL 			NOT NULL,
     strnd_name 					VARCHAR(100)    NOT NULL,
     strnd_description 			TEXT    		NOT NULL,
+	strnd_version 				VARCHAR(50) 	NOT NULL,
+	strnd_status 				BOOLEAN 	DEFAULT TRUE,
 	strnd_date_create 			TIMESTAMP DEFAULT CURRENT_TIMESTAMP				,
 	strnd_date_update 			TIMESTAMP DEFAULT CURRENT_TIMESTAMP				
 )
