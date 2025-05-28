@@ -1,7 +1,16 @@
 services:
+  frontend:
+      build:
+        context: ./04_Frontend/qualityapp_front
+        dockerfile: Dockerfile
+      ports:
+        - "5003:5003"
+      depends_on:
+        - auth_service
+        - quality_service
   auth_service:
     build:
-        context: ./auth_service
+        context: ./03_Backend/auth_service
     container_name: auth_service
     ports:
       - "5000:5000"
@@ -11,12 +20,12 @@ services:
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:5000/auth/health"]
       interval: 10s
-      timeout: 5s
+      timeout: 10s
       retries: 3
 
   quality_service:
     build:
-        context: ./quality_service
+        context: ./03_Backend/quality_service
     container_name: quality_service
     ports:
       - "5001:5001"

@@ -59,62 +59,61 @@ class SoftwareService:
         finally:
             conn.close()
     @staticmethod
-    def update_software(software_id, name=None, general_objectives=None, specific_objectives=None, 
-                   company=None, city=None, phone=None, test_date=None):
-    conn = get_db_connection()
-    cursor = conn.cursor()
-    
-    try:
-        update_fields = []
-        params = []
+    def update_software(software_id, name=None, general_objectives=None, specific_objectives=None, company=None, city=None, phone=None, test_date=None):
+        conn = get_db_connection()
+        cursor = conn.cursor()
         
-        if name is not None:
-            update_fields.append("soft_name = %s")
-            params.append(name)
-        if general_objectives is not None:
-            update_fields.append("soft_ge_objct = %s")
-            params.append(general_objectives)
-        if specific_objectives is not None:
-            update_fields.append("soft_spfc_objct = %s")
-            params.append(specific_objectives)
-        if company is not None:
-            update_fields.append("soft_company = %s")
-            params.append(company)
-        if city is not None:
-            update_fields.append("soft_city = %s")
-            params.append(city)
-        if phone is not None:
-            update_fields.append("soft_phone = %s")
-            params.append(phone)
-        if test_date is not None:
-            update_fields.append("soft_test_date = %s")
-            params.append(test_date)
+        try:
+            update_fields = []
+            params = []
             
-        if not update_fields:
+            if name is not None:
+                update_fields.append("soft_name = %s")
+                params.append(name)
+            if general_objectives is not None:
+                update_fields.append("soft_ge_objct = %s")
+                params.append(general_objectives)
+            if specific_objectives is not None:
+                update_fields.append("soft_spfc_objct = %s")
+                params.append(specific_objectives)
+            if company is not None:
+                update_fields.append("soft_company = %s")
+                params.append(company)
+            if city is not None:
+                update_fields.append("soft_city = %s")
+                params.append(city)
+            if phone is not None:
+                update_fields.append("soft_phone = %s")
+                params.append(phone)
+            if test_date is not None:
+                update_fields.append("soft_test_date = %s")
+                params.append(test_date)
+                
+            if not update_fields:
+                return None
+                
+            params.append(software_id)
+            
+            query = f"""
+                UPDATE ge_software 
+                SET {", ".join(update_fields)}
+                WHERE soft_id = %s
+                RETURNING *
+            """
+            
+            cursor.execute(query, params)
+            software_data = cursor.fetchone()
+            conn.commit()
+            
+            if software_data:
+                return Software.from_db_row(software_data)
             return None
             
-        params.append(software_id)
-        
-        query = f"""
-            UPDATE ge_software 
-            SET {", ".join(update_fields)}
-            WHERE soft_id = %s
-            RETURNING *
-        """
-        
-        cursor.execute(query, params)
-        software_data = cursor.fetchone()
-        conn.commit()
-        
-        if software_data:
-            return Software.from_db_row(software_data)
-        return None
-        
-    except Exception as e:
-        conn.rollback()
-        raise e
-    finally:
-        conn.close()
+        except Exception as e:
+            conn.rollback()
+            raise e
+        finally:
+            conn.close()
 
     @staticmethod
     def delete_software(software_id):

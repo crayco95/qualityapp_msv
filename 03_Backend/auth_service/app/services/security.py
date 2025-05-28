@@ -1,4 +1,5 @@
 import bcrypt
+from datetime import timedelta
 from flask_jwt_extended import create_access_token
 
 def hash_password(password):

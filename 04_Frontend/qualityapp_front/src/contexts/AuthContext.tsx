@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { api } from '../services/api';
+import { apiAuth } from '../services/api';
 
 interface User {
   id: string;
@@ -31,13 +31,13 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       
       if (token) {
         try {
-          api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-          const response = await api.get('/users/me');
+          apiAuth.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+          const response = await apiAuth.get('/users/me');
           setUser(response.data);
         } catch (error) {
           console.error('Failed to load user:', error);
           localStorage.removeItem('token');
-          delete api.defaults.headers.common['Authorization'];
+          delete apiAuth.defaults.headers.common['Authorization'];
         }
       }
       
@@ -52,11 +52,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       setLoading(true);
       setError(null);
       
-      const response = await api.post('/auth/login', { email, password });
+      const response = await apiAuth.post('/auth/login', { email, password });
       const { token, user } = response.data;
       
       localStorage.setItem('token', token);
-      api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+      apiAuth.defaults.headers.common['Authorization'] = `Bearer ${token}`;
       
       setUser(user);
     } catch (error: any) {
@@ -69,7 +69,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const logout = () => {
     localStorage.removeItem('token');
-    delete api.defaults.headers.common['Authorization'];
+    delete apiAuth.defaults.headers.common['Authorization'];
     setUser(null);
   };
 

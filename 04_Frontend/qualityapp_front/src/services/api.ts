@@ -1,8 +1,15 @@
 import axios from 'axios';
 
 // Create axios instance with base URL
+export const apiAuth = axios.create({
+  baseURL: import.meta.env.VITE_AUTH_SERVICE_URL || 'http://localhost:5000',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
+
 export const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:3000/api',
+  baseURL: import.meta.env.VITE_QUALITY_SERVICE_URL || 'http://localhost:5001',
   headers: {
     'Content-Type': 'application/json',
   },
@@ -37,11 +44,11 @@ api.interceptors.response.use(
 
 // API endpoints
 export const userService = {
-  getAll: () => api.get('/users'),
-  getById: (id: string) => api.get(`/users/${id}`),
-  create: (data: any) => api.post('/users', data),
-  update: (id: string, data: any) => api.put(`/users/${id}`, data),
-  delete: (id: string) => api.delete(`/users/${id}`),
+  getAll: () => apiAuth.get('/api/users'),
+  getById: (id: string) => apiAuth.get(`/api/users/${id}`),
+  create: (data: any) => apiAuth.post('/api/users', data),
+  update: (id: string, data: any) => apiAuth.put(`/api/users/${id}`, data),
+  delete: (id: string) => apiAuth.delete(`/api/users/${id}`),
 };
 
 export const softwareService = {

@@ -25,7 +25,7 @@ const Login: React.FC = () => {
       await login(data.email, data.password);
       navigate('/dashboard');
     } catch (error: any) {
-      setError(error.response?.data?.message || 'Failed to login. Please check your credentials.');
+      setError(error.response?.data?.message || 'Fallo en inicio de sesión.');
     } finally {
       setIsLoading(false);
     }
