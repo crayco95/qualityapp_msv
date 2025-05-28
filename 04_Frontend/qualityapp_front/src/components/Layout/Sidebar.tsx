@@ -8,7 +8,8 @@ import {
   FileText,
   LayoutDashboard,
   LogOut,
-  Shield
+  Shield,
+  Award
 } from 'lucide-react';
 import '../../styles/Sidebar.css';
 
@@ -65,12 +66,20 @@ const Sidebar: React.FC = () => {
           </li>
 
           {user?.role === 'admin' && (
-            <li>
-              <Link to="/standards" className={isActive('/standards') ? 'active' : ''}>
-                <ClipboardCheck size={20} />
-                <span>Normas de Calidad</span>
-              </Link>
-            </li>
+            <>
+              <li>
+                <Link to="/standards" className={isActive('/standards') ? 'active' : ''}>
+                  <ClipboardCheck size={20} />
+                  <span>Normas de Calidad</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/classifications" className={isActive('/classifications') ? 'active' : ''}>
+                  <Award size={20} />
+                  <span>Clasificaciones</span>
+                </Link>
+              </li>
+            </>
           )}
 
           <li>

@@ -11,7 +11,9 @@ import SoftwareDetail from './pages/software/SoftwareDetail';
 import StandardManagement from './pages/StandardManagement';
 import ParameterManagement from './pages/ParameterManagement';
 import SubcategoryManagement from './pages/SubcategoryManagement';
+import ClassificationManagement from './pages/ClassificationManagement';
 import EvaluationManagement from './pages/EvaluationManagement';
+import EvaluationProcess from './pages/EvaluationProcess';
 import './App.css';
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
@@ -98,9 +100,19 @@ function App() {
               <SubcategoryManagement />
             </AdminRoute>
           } />
+          <Route path="/classifications" element={
+            <AdminRoute>
+              <ClassificationManagement />
+            </AdminRoute>
+          } />
           <Route path="/evaluations" element={
             <ProtectedRoute>
               <EvaluationManagement />
+            </ProtectedRoute>
+          } />
+          <Route path="/evaluations/process/:softwareId/:standardId" element={
+            <ProtectedRoute>
+              <EvaluationProcess />
             </ProtectedRoute>
           } />
           <Route path="/" element={<Navigate to="/login" />} />

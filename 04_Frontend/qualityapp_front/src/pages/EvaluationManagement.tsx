@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { ClipboardCheck, Plus, Eye, Edit, Trash2, Download, FileText, Package, Target } from 'lucide-react';
+import { ClipboardCheck, Plus, Eye, Edit, Trash2, Download, FileText, Package, Target, Play } from 'lucide-react';
 import MainLayout from '../components/Layout/MainLayout';
 import Modal from '../components/Modal/Modal';
 import EvaluationForm from '../components/EvaluationForm/EvaluationForm';
@@ -8,6 +8,7 @@ import { assessmentService, softwareService, standardService, reportService } fr
 import { Assessment, AssessmentFormData, Software, Standard } from '../types/standard';
 import { useAuth } from '../contexts/AuthContext';
 import { formatDate } from '../utils/dateUtils';
+import { toast } from 'react-toastify';
 
 const EvaluationManagement: React.FC = () => {
   const navigate = useNavigate();
@@ -20,9 +21,12 @@ const EvaluationManagement: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isStartEvaluationModalOpen, setIsStartEvaluationModalOpen] = useState(false);
   const [editingEvaluation, setEditingEvaluation] = useState<Assessment | null>(null);
   const [formLoading, setFormLoading] = useState(false);
   const [preselectedSoftware, setPreselectedSoftware] = useState<Software | null>(null);
+  const [selectedSoftwareForEvaluation, setSelectedSoftwareForEvaluation] = useState<number | null>(null);
+  const [selectedStandardForEvaluation, setSelectedStandardForEvaluation] = useState<number | null>(null);
 
   const canManageEvaluations = user?.role === 'admin' || user?.role === 'tester';
 
@@ -103,6 +107,71 @@ const EvaluationManagement: React.FC = () => {
     setPreselectedSoftware(null); // Limpiar preselección al cerrar
   };
 
+  const openStartEvaluationModal = () => {
+    setIsStartEvaluationModalOpen(true);
+    setSelectedSoftwareForEvaluation(null);
+    setSelectedStandardForEvaluation(null);
+  };
+
+  const closeStartEvaluationModal = () => {
+    setIsStartEvaluationModalOpen(false);
+    setSelectedSoftwareForEvaluation(null);
+    setSelectedStandardForEvaluation(null);
+  };
+
+  const handleStartEvaluation = () => {
+    if (!selectedSoftwareForEvaluation || !selectedStandardForEvaluation) {
+      setError('Por favor selecciona un software y una norma');
+      return;
+    }
+
+    navigate(`/evaluations/process/${selectedSoftwareForEvaluation}/${selectedStandardForEvaluation}`);
+  };
+
+  const handleDownloadAssessmentReport = async (assessmentId: number) => {
+    try {
+      const response = await reportService.generateAssessmentReport(assessmentId.toString());
+
+      // Crear un blob y descargar el archivo
+      const blob = new Blob([response.data], { type: 'application/pdf' });
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `reporte_evaluacion_${assessmentId}.pdf`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+
+      toast.success('Reporte descargado exitosamente');
+    } catch (error) {
+      console.error('Error downloading assessment report:', error);
+      toast.error('Error al descargar el reporte');
+    }
+  };
+
+  const handleDownloadSoftwareReport = async (softwareId: number) => {
+    try {
+      const response = await reportService.generateSoftwareReport(softwareId.toString());
+
+      // Crear un blob y descargar el archivo
+      const blob = new Blob([response.data], { type: 'application/pdf' });
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `reporte_software_${softwareId}.pdf`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+
+      toast.success('Reporte de software descargado exitosamente');
+    } catch (error) {
+      console.error('Error downloading software report:', error);
+      toast.error('Error al descargar el reporte de software');
+    }
+  };
+
   const handleCreateEvaluation = async (data: AssessmentFormData) => {
     try {
       setFormLoading(true);
@@ -149,18 +218,23 @@ const EvaluationManagement: React.FC = () => {
 
   const handleDownloadReport = async (evaluationId: number) => {
     try {
-      const response = await reportService.getAssessmentReport(evaluationId.toString());
-      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const response = await reportService.generateAssessmentReport(evaluationId.toString());
+
+      // Crear un blob y descargar el archivo
+      const blob = new Blob([response.data], { type: 'application/pdf' });
+      const url = window.URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = url;
-      link.setAttribute('download', `evaluacion_${evaluationId}.pdf`);
+      link.download = `reporte_evaluacion_${evaluationId}.pdf`;
       document.body.appendChild(link);
       link.click();
-      link.remove();
+      document.body.removeChild(link);
       window.URL.revokeObjectURL(url);
+
+      toast.success('Reporte descargado exitosamente');
     } catch (err: any) {
       console.error('Error downloading report:', err);
-      setError('Error al descargar el reporte');
+      toast.error('Error al descargar el reporte');
     }
   };
 
@@ -226,13 +300,22 @@ const EvaluationManagement: React.FC = () => {
             </div>
           </div>
           {canManageEvaluations && (
-            <button
-              onClick={openCreateModal}
-              className="btn btn-primary"
-            >
-              <Plus size={18} className="mr-2" />
-              Nueva Evaluación
-            </button>
+            <div className="flex gap-3">
+              <button
+                onClick={openStartEvaluationModal}
+                className="btn btn-secondary"
+              >
+                <Play size={18} className="mr-2" />
+                Iniciar Evaluación
+              </button>
+              <button
+                onClick={openCreateModal}
+                className="btn btn-primary"
+              >
+                <Plus size={18} className="mr-2" />
+                Nueva Evaluación
+              </button>
+            </div>
           )}
         </div>
 
@@ -378,6 +461,85 @@ const EvaluationManagement: React.FC = () => {
             loading={formLoading}
             isEdit={!!editingEvaluation}
           />
+        </Modal>
+
+        {/* Start Evaluation Modal */}
+        <Modal
+          isOpen={isStartEvaluationModalOpen}
+          onClose={closeStartEvaluationModal}
+          title="Iniciar Proceso de Evaluación"
+          size="md"
+        >
+          <div className="space-y-6">
+            <div className="flex items-center gap-3 pb-4 border-b border-border">
+              <div className="p-2 bg-primary/10 rounded-lg">
+                <Play className="w-6 h-6 text-primary" />
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-text-primary">
+                  Proceso de Evaluación Completa
+                </h3>
+                <p className="text-sm text-text-secondary">
+                  Selecciona el software y norma para iniciar la evaluación paso a paso
+                </p>
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-text-primary mb-2">
+                  Software a Evaluar *
+                </label>
+                <select
+                  value={selectedSoftwareForEvaluation || ''}
+                  onChange={(e) => setSelectedSoftwareForEvaluation(Number(e.target.value) || null)}
+                  className="form-input w-full"
+                >
+                  <option value="">Seleccione un software</option>
+                  {softwares.map((software) => (
+                    <option key={software.id} value={software.id}>
+                      {software.name} - {software.company_name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-text-primary mb-2">
+                  Norma de Evaluación *
+                </label>
+                <select
+                  value={selectedStandardForEvaluation || ''}
+                  onChange={(e) => setSelectedStandardForEvaluation(Number(e.target.value) || null)}
+                  className="form-input w-full"
+                >
+                  <option value="">Seleccione una norma</option>
+                  {standards.filter(s => s.status).map((standard) => (
+                    <option key={standard.id} value={standard.id}>
+                      {standard.name} - Versión {standard.version}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
+            <div className="flex justify-end gap-3 pt-4 border-t border-border">
+              <button
+                onClick={closeStartEvaluationModal}
+                className="btn btn-outline"
+              >
+                Cancelar
+              </button>
+              <button
+                onClick={handleStartEvaluation}
+                disabled={!selectedSoftwareForEvaluation || !selectedStandardForEvaluation}
+                className="btn btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                <Play size={18} className="mr-2" />
+                Iniciar Evaluación
+              </button>
+            </div>
+          </div>
         </Modal>
       </div>
     </MainLayout>

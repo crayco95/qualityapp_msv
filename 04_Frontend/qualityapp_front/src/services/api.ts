@@ -140,11 +140,11 @@ export const assessmentService = {
 
 export const classificationService = {
   getAll: () => api.get('/classification/classifications'),
-  getById: (id: string) => api.get(`/classification/classifications/${id}`),
-  getByScore: (score: number) => api.get(`/classification/classifications/score/${score}`),
   create: (data: any) => api.post('/classification/classifications', data),
+  getById: (id: string) => api.get(`/classification/classifications/${id}`),
   update: (id: string, data: any) => api.put(`/classification/classifications/${id}`, data),
   delete: (id: string) => api.delete(`/classification/classifications/${id}`),
+  getByScore: (score: number) => api.get(`/classification/classifications/score/${score}`),
 };
 
 export const resultService = {
@@ -156,12 +156,16 @@ export const resultService = {
 };
 
 export const reportService = {
-  getAssessmentReport: (assessmentId: string) => api.get(`/report/reports/assessment/${assessmentId}`, {
-    responseType: 'blob'
-  }),
-  getSoftwareReport: (softwareId: string) => api.get(`/report/reports/software/${softwareId}`, {
-    responseType: 'blob'
-  }),
+  generateAssessmentReport: (assessmentId: string) => {
+    return api.get(`/report/reports/assessment/${assessmentId}`, {
+      responseType: 'blob'
+    });
+  },
+  generateSoftwareReport: (softwareId: string) => {
+    return api.get(`/report/reports/software/${softwareId}`, {
+      responseType: 'blob'
+    });
+  },
 };
 
 // Legacy aliases for backward compatibility (deprecated - use specific services above)
