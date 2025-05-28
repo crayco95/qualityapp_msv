@@ -5,6 +5,8 @@ from app.services.middleware import cors_middleware
 # Importación de blueprints
 from app.controllers.software_routes import software_bp
 from app.controllers.participant_routes import participant_bp
+from app.controllers.parameter_routes import parameter_bp
+from app.controllers.subcategory_routes import subcategory_bp
 from app.controllers.standard_routes import standard_bp
 from app.controllers.assessment_routes import assessment_bp
 from app.controllers.classification_routes import classification_bp
@@ -16,6 +18,10 @@ from app.models.software import Software
 from app.models.participant import Participant
 from app.models.standard import Standard
 from app.models.result import Result
+from app.models.parameter import Parameter
+from app.models.classification import Classification
+from app.models.assessment import Assessment
+from app.models.subcategory import Subcategory
 
 
 def create_app():
@@ -28,6 +34,8 @@ def create_app():
     app.after_request(lambda response: cors_middleware(lambda: response)())
 
     app.register_blueprint(software_bp, url_prefix="/software")
+    app.register_blueprint(parameter_bp, url_prefix="/parameter")
+    app.register_blueprint(subcategory_bp, url_prefix="/subcategory")
     app.register_blueprint(participant_bp, url_prefix="/participant")
     app.register_blueprint(standard_bp, url_prefix="/standard")
     app.register_blueprint(assessment_bp, url_prefix="/assessment")
@@ -38,4 +46,4 @@ def create_app():
     return app
 
 # Exportar los modelos y componentes principales
-__all__ = ['create_app', 'Software', 'Participant', 'Standard', 'Parameter', 'Classification', 'Assessment', 'Result']
+__all__ = ['create_app', 'Software', 'Participant', 'Standard', 'Subcategory', 'Parameter', 'Classification', 'Assessment', 'Result']

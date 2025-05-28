@@ -4,36 +4,41 @@ import { AuthProvider, useAuth } from './contexts/AuthContext';
 import Login from './pages/Login';
 import AdminDashboard from './pages/AdminDashboard';
 import UserManagement from './pages/UserManagement';
-import SoftwareManagement from './pages/SoftwareManagement';
-import StandardsManagement from './pages/StandardsManagement';
+import ParticipantManagement from './pages/ParticipantManagement';
+import SoftwareList from './pages/software/SoftwareList';
+import SoftwareForm from './pages/software/SoftwareForm';
+import SoftwareDetail from './pages/software/SoftwareDetail';
+import StandardManagement from './pages/StandardManagement';
+import ParameterManagement from './pages/ParameterManagement';
+import SubcategoryManagement from './pages/SubcategoryManagement';
 import EvaluationManagement from './pages/EvaluationManagement';
 import './App.css';
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const { user, loading } = useAuth();
-  
+
   if (loading) {
     return <div className="loading-screen">Loading...</div>;
   }
-  
+
   if (!user) {
     return <Navigate to="/login" />;
   }
-  
+
   return <>{children}</>;
 };
 
 const AdminRoute = ({ children }: { children: React.ReactNode }) => {
   const { user, loading } = useAuth();
-  
+
   if (loading) {
     return <div className="loading-screen">Loading...</div>;
   }
-  
+
   if (!user || user.role !== 'admin') {
     return <Navigate to="/login" />;
   }
-  
+
   return <>{children}</>;
 };
 
@@ -53,14 +58,44 @@ function App() {
               <UserManagement />
             </AdminRoute>
           } />
+          <Route path="/participants" element={
+            <AdminRoute>
+              <ParticipantManagement />
+            </AdminRoute>
+          } />
           <Route path="/software" element={
             <ProtectedRoute>
-              <SoftwareManagement />
+              <SoftwareList />
+            </ProtectedRoute>
+          } />
+          <Route path="/software/new" element={
+            <ProtectedRoute>
+              <SoftwareForm />
+            </ProtectedRoute>
+          } />
+          <Route path="/software/:id" element={
+            <ProtectedRoute>
+              <SoftwareDetail />
+            </ProtectedRoute>
+          } />
+          <Route path="/software/:id/edit" element={
+            <ProtectedRoute>
+              <SoftwareForm />
             </ProtectedRoute>
           } />
           <Route path="/standards" element={
             <AdminRoute>
-              <StandardsManagement />
+              <StandardManagement />
+            </AdminRoute>
+          } />
+          <Route path="/standards/:standardId/parameters" element={
+            <AdminRoute>
+              <ParameterManagement />
+            </AdminRoute>
+          } />
+          <Route path="/parameters/:parameterId/subcategories" element={
+            <AdminRoute>
+              <SubcategoryManagement />
             </AdminRoute>
           } />
           <Route path="/evaluations" element={

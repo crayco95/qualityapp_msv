@@ -4,6 +4,15 @@ from app.services.assessment_service import AssessmentService
 
 assessment_bp = Blueprint('assessment', __name__)
 
+@assessment_bp.route('/assessments', methods=['GET'])
+@jwt_required()
+def get_all_assessments():
+    try:
+        assessments = AssessmentService.get_all_assessments()
+        return jsonify([a.to_dict() for a in assessments])
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
 @assessment_bp.route('/assessments', methods=['POST'])
 @jwt_required()
 def create_assessment():
@@ -15,11 +24,11 @@ def create_assessment():
         score = data.get('score')
         classification_id = data.get('classification_id')
 
-        if not all([software_id, standard_id, prcnt_id]):
+        if not all([software_id, standard_id, param_id]):
             return jsonify({'error': 'Se requieren software_id, standard_id y param_id'}), 400
 
         assessment = AssessmentService.create_assessment(
-            software_id, standard_id, prcnt_id, score, classification_id)
+            software_id, standard_id, param_id, score, classification_id)
         return jsonify(assessment.to_dict()), 201
     except ValueError as e:
         return jsonify({'error': str(e)}), 400

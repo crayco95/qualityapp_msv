@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosInstance } from 'axios';
 
 // Create axios instance with base URL
 export const apiAuth = axios.create({
@@ -15,86 +15,154 @@ export const api = axios.create({
   },
 });
 
-// Add request interceptor to include the auth token
-api.interceptors.request.use(
-  (config) => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
+// Add request interceptor to include the auth token for both instances
+const addAuthInterceptor = (axiosInstance: AxiosInstance) => {
+  axiosInstance.interceptors.request.use(
+    (config) => {
+      const token = localStorage.getItem('token');
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+      }
+      return config;
+    },
+    (error) => {
+      return Promise.reject(error);
     }
-    return config;
-  },
-  (error) => {
-    return Promise.reject(error);
-  }
-);
-
-// Add response interceptor to handle errors
-api.interceptors.response.use(
-  (response) => response,
-  (error) => {
-    // Handle unauthorized errors (401)
-    if (error.response && error.response.status === 401) {
-      localStorage.removeItem('token');
-      window.location.href = '/login';
-    }
-    return Promise.reject(error);
-  }
-);
-
-// API endpoints
-export const userService = {
-  getAll: () => apiAuth.get('/api/users'),
-  getById: (id: string) => apiAuth.get(`/api/users/${id}`),
-  create: (data: any) => apiAuth.post('/api/users', data),
-  update: (id: string, data: any) => apiAuth.put(`/api/users/${id}`, data),
-  delete: (id: string) => apiAuth.delete(`/api/users/${id}`),
+  );
 };
 
+addAuthInterceptor(api);
+addAuthInterceptor(apiAuth);
+
+// Add response interceptor to handle errors for both instances
+const addErrorInterceptor = (axiosInstance: AxiosInstance) => {
+  axiosInstance.interceptors.response.use(
+    (response) => response,
+    (error) => {
+      // Handle unauthorized errors (401)
+      if (error.response && error.response.status === 401) {
+        localStorage.removeItem('token');
+        window.location.href = '/login';
+      }
+      return Promise.reject(error);
+    }
+  );
+};
+
+addErrorInterceptor(api);
+addErrorInterceptor(apiAuth);
+
+// 🔐 AUTH SERVICE ENDPOINTS
+export const authService = {
+  login: (data: any) => apiAuth.post('/auth/login', data),
+  register: (data: any) => apiAuth.post('/auth/register', data),
+  profile: () => apiAuth.get('/auth/profile'),
+  health: () => apiAuth.get('/auth/health'),
+};
+
+export const userService = {
+  getAll: () => apiAuth.get('/users/all'),
+  getById: (id: string) => apiAuth.get(`/users/${id}`),
+  create: (data: any) => apiAuth.post('/auth/register', data),
+  update: (id: string, data: any) => apiAuth.put(`/users/${id}`, data),
+  delete: (id: string) => apiAuth.delete(`/users/${id}`),
+};
+
+export const activityService = {
+  getLogs: () => apiAuth.get('/activity/logs'),
+};
+
+// ⚡ QUALITY SERVICE ENDPOINTS
 export const softwareService = {
-  getAll: () => api.get('/software'),
+  getAll: () => api.get('/software/list'),
   getById: (id: string) => api.get(`/software/${id}`),
-  create: (data: any) => api.post('/software', data),
+  create: (data: any) => api.post('/software/register', data),
   update: (id: string, data: any) => api.put(`/software/${id}`, data),
   delete: (id: string) => api.delete(`/software/${id}`),
-  getParticipants: (id: string) => api.get(`/software/${id}/participants`),
-  addParticipant: (id: string, userId: string) => api.post(`/software/${id}/participants`, { userId }),
-  removeParticipant: (id: string, userId: string) => api.delete(`/software/${id}/participants/${userId}`),
+};
+
+
+
+export const participantService = {
+  getAll: () => api.get('/participant/list'),
+  getBySoftware: (softwareId: string) => api.get(`/participant/software/${softwareId}`),
+  getById: (id: string) => api.get(`/participant/${id}`),
+  create: (data: any) => api.post('/participant/register', data),
+  update: (id: string, data: any) => api.put(`/participant/${id}`, data),
+  delete: (id: string) => api.delete(`/participant/${id}`),
 };
 
 export const standardService = {
-  getAll: () => api.get('/standards'),
-  getById: (id: string) => api.get(`/standards/${id}`),
-  create: (data: any) => api.post('/standards', data),
-  update: (id: string, data: any) => api.put(`/standards/${id}`, data),
-  delete: (id: string) => api.delete(`/standards/${id}`),
-  getParameters: (id: string) => api.get(`/standards/${id}/parameters`),
-  createParameter: (id: string, data: any) => api.post(`/standards/${id}/parameters`, data),
-  updateParameter: (id: string, parameterId: string, data: any) => 
-    api.put(`/standards/${id}/parameters/${parameterId}`, data),
-  deleteParameter: (id: string, parameterId: string) => 
-    api.delete(`/standards/${id}/parameters/${parameterId}`),
-  getSubcategories: (id: string, parameterId: string) => 
-    api.get(`/standards/${id}/parameters/${parameterId}/subcategories`),
-  createSubcategory: (id: string, parameterId: string, data: any) => 
-    api.post(`/standards/${id}/parameters/${parameterId}/subcategories`, data),
-  updateSubcategory: (id: string, parameterId: string, subcategoryId: string, data: any) => 
-    api.put(`/standards/${id}/parameters/${parameterId}/subcategories/${subcategoryId}`, data),
-  deleteSubcategory: (id: string, parameterId: string, subcategoryId: string) => 
-    api.delete(`/standards/${id}/parameters/${parameterId}/subcategories/${subcategoryId}`),
+  getAll: () => api.get('/standard/list'),
+  getById: (id: string) => api.get(`/standard/${id}`),
+  create: (data: any) => api.post('/standard/create', data),
+  update: (id: string, data: any) => api.put(`/standard/${id}`, data),
+  delete: (id: string) => api.delete(`/standard/${id}`),
 };
 
-export const evaluationService = {
-  getAll: () => api.get('/evaluations'),
-  getById: (id: string) => api.get(`/evaluations/${id}`),
-  create: (data: any) => api.post('/evaluations', data),
-  update: (id: string, data: any) => api.put(`/evaluations/${id}`, data),
-  delete: (id: string) => api.delete(`/evaluations/${id}`),
-  getParameterEvaluations: (id: string) => api.get(`/evaluations/${id}/parameters`),
-  createParameterEvaluation: (id: string, data: any) => api.post(`/evaluations/${id}/parameters`, data),
-  updateParameterEvaluation: (id: string, paramEvalId: string, data: any) => 
-    api.put(`/evaluations/${id}/parameters/${paramEvalId}`, data),
-  getResults: (id: string) => api.get(`/evaluations/${id}/results`),
-  getParameterResults: (id: string, paramEvalId: string) => 
-    api.get(`/evaluations/${id}/parameters/${paramEvalId}/results`),
+export const parameterService = {
+  getAll: () => api.get('/parameter/list'),
+  getByStandard: (standardId: string) => api.get(`/parameter/standard/${standardId}`),
+  getById: (id: string) => api.get(`/parameter/${id}`),
+  create: (data: any) => api.post('/parameter/create', data),
+  update: (id: string, data: any) => api.put(`/parameter/${id}`, data),
+  delete: (id: string) => api.delete(`/parameter/${id}`),
 };
+
+export const subcategoryService = {
+  getAll: () => api.get('/subcategory/list'),
+  getByParameter: (parameterId: string) => api.get(`/subcategory/parameter/${parameterId}`),
+  getById: (id: string) => api.get(`/subcategory/${id}`),
+  create: (data: any) => {
+    // Mapear parameter_id a param_id para el backend
+    // Solo enviar campos que el backend acepta
+    const backendData = {
+      param_id: data.parameter_id,
+      name: data.name,
+      description: data.description
+    };
+    return api.post('/subcategory/create', backendData);
+  },
+  update: (id: string, data: any) => api.put(`/subcategory/${id}`, data),
+  delete: (id: string) => api.delete(`/subcategory/${id}`),
+};
+
+export const assessmentService = {
+  getAll: () => api.get('/assessment/assessments'),
+  create: (data: any) => api.post('/assessment/assessments', data),
+  getById: (id: string) => api.get(`/assessment/assessments/${id}`),
+  update: (id: string, data: any) => api.put(`/assessment/assessments/${id}`, data),
+  delete: (id: string) => api.delete(`/assessment/assessments/${id}`),
+  getBySoftware: (softwareId: string) => api.get(`/assessment/assessments/software/${softwareId}`),
+  getByStandard: (standardId: string) => api.get(`/assessment/assessments/standard/${standardId}`),
+  getSoftwareSummary: (softwareId: string) => api.get(`/assessment/assessments/software/${softwareId}/summary`),
+};
+
+export const classificationService = {
+  getAll: () => api.get('/classification/classifications'),
+  getById: (id: string) => api.get(`/classification/classifications/${id}`),
+  getByScore: (score: number) => api.get(`/classification/classifications/score/${score}`),
+  create: (data: any) => api.post('/classification/classifications', data),
+  update: (id: string, data: any) => api.put(`/classification/classifications/${id}`, data),
+  delete: (id: string) => api.delete(`/classification/classifications/${id}`),
+};
+
+export const resultService = {
+  create: (data: any) => api.post('/result/results', data),
+  getById: (id: string) => api.get(`/result/results/${id}`),
+  update: (id: string, data: any) => api.put(`/result/results/${id}`, data),
+  delete: (id: string) => api.delete(`/result/results/${id}`),
+  getByAssessment: (assessmentId: string) => api.get(`/result/results/assessment/${assessmentId}`),
+};
+
+export const reportService = {
+  getAssessmentReport: (assessmentId: string) => api.get(`/report/reports/assessment/${assessmentId}`, {
+    responseType: 'blob'
+  }),
+  getSoftwareReport: (softwareId: string) => api.get(`/report/reports/software/${softwareId}`, {
+    responseType: 'blob'
+  }),
+};
+
+// Legacy aliases for backward compatibility (deprecated - use specific services above)
+export const evaluationService = assessmentService;

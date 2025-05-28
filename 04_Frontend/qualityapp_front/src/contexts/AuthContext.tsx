@@ -31,13 +31,13 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       
       if (token) {
         try {
-          apiAuth.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-          const response = await apiAuth.get('/users/me');
-          setUser(response.data);
+          // El token se maneja automáticamente a través del interceptor
+          const response = await apiAuth.get('/auth/profile');
+          setUser(response.data.user);
         } catch (error) {
           console.error('Failed to load user:', error);
           localStorage.removeItem('token');
-          delete apiAuth.defaults.headers.common['Authorization'];
+          // El token se maneja automáticamente a través del interceptor
         }
       }
       
@@ -53,12 +53,16 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       setError(null);
       
       const response = await apiAuth.post('/auth/login', { email, password });
-      const { token, user } = response.data;
+      const { access_token } = response.data;
       
-      localStorage.setItem('token', token);
-      apiAuth.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+      localStorage.setItem('token', access_token);
+      // El token se maneja automáticamente a través del interceptor
       
-      setUser(user);
+      // Obtener los datos del usuario después de iniciar sesión
+      const profileResponse = await apiAuth.get('/auth/profile');
+      const userData = profileResponse.data.user;
+      
+      setUser(userData);
     } catch (error: any) {
       setError(error.response?.data?.message || 'Failed to login. Please try again.');
       throw error;
@@ -69,7 +73,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const logout = () => {
     localStorage.removeItem('token');
-    delete apiAuth.defaults.headers.common['Authorization'];
+    // El token se maneja automáticamente a través del interceptor
     setUser(null);
   };
 
